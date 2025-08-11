@@ -7,6 +7,7 @@ import { RestockAlerts } from '@/components/dashboard/restock-alerts';
 import { DemandForecast } from '@/components/dashboard/demand-forecast';
 import { FulfillmentTracker } from '@/components/dashboard/fulfillment-tracker';
 import { DemandSupplyHeatmap } from '@/components/dashboard/demand-supply-heatmap';
+import { ProductIdentification } from '@/components/dashboard/product-identification';
 import { DollarSign, Package, ShoppingCart, Truck } from 'lucide-react';
 
 export default function DashboardPage() {
@@ -50,6 +51,7 @@ export default function DashboardPage() {
             </div>
           </div>
           <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-1">
+            <ProductIdentification />
             <DemandForecast />
             <RestockAlerts />
           </div>
