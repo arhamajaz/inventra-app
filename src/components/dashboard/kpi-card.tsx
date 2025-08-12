@@ -6,9 +6,10 @@ interface KpiCardProps {
   value: string;
   Icon: LucideIcon;
   change?: string;
+  changeText?: string;
 }
 
-export function KpiCard({ title, value, Icon, change }: KpiCardProps) {
+export function KpiCard({ title, value, Icon, change, changeText }: KpiCardProps) {
   return (
     <Card className="transition-transform hover:scale-[1.02] hover:shadow-md">
       <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
@@ -20,7 +21,7 @@ export function KpiCard({ title, value, Icon, change }: KpiCardProps) {
       <CardContent>
         <div className="text-2xl font-bold">{value}</div>
         {change && (
-          <p className="text-xs text-muted-foreground">{change} from last month</p>
+          <p className="text-xs text-muted-foreground">{change} {changeText}</p>
         )}
       </CardContent>
     </Card>
