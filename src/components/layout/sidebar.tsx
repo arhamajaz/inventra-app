@@ -8,6 +8,7 @@ import {
   Truck,
   Users,
   Package,
+  Wand2,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -20,16 +21,20 @@ import {
   SidebarSeparator,
 } from '@/components/ui/sidebar';
 import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
+import { usePathname } from 'next/navigation';
 
 const menuItems = [
-  { href: '#', icon: LayoutDashboard, label: 'Dashboard' },
+  { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
   { href: '#', icon: Boxes, label: 'Inventory' },
   { href: '#', icon: Truck, label: 'Orders' },
-  { href: '#', icon: BarChart3, label: 'Analytics' },
+  { href: '/analytics', icon: BarChart3, label: 'Analytics' },
+  { href: '/ai-tools', icon: Wand2, label: 'AI Tools' },
   { href: '#', icon: Users, label: 'Suppliers' },
 ];
 
 export function AppSidebar() {
+  const pathname = usePathname();
+
   return (
     <Sidebar>
       <SidebarHeader>
@@ -42,11 +47,11 @@ export function AppSidebar() {
       </SidebarHeader>
       <SidebarContent>
         <SidebarMenu>
-          {menuItems.map((item, index) => (
+          {menuItems.map((item) => (
             <SidebarMenuItem key={item.label}>
               <SidebarMenuButton
                 asChild
-                isActive={index === 0}
+                isActive={pathname === item.href}
                 tooltip={{ children: item.label, side: 'right' }}
               >
                 <Link href={item.href}>
