@@ -46,7 +46,7 @@ export function CustomerList() {
             <TableRow>
               <TableHead>Order ID</TableHead>
               <TableHead>Customer</TableHead>
-              <TableHead>Membership ID</TableHead>
+              <TableHead>Customer ID</TableHead>
               <TableHead>Status</TableHead>
               <TableHead>Date</TableHead>
               <TableHead className="text-right">Total Bill</TableHead>
@@ -57,7 +57,7 @@ export function CustomerList() {
               <TableRow key={order.id}>
                 <TableCell className="font-medium">{order.id}</TableCell>
                 <TableCell>{order.customerName}</TableCell>
-                <TableCell className="text-muted-foreground">{order.membershipId}</TableCell>
+                <TableCell className="text-muted-foreground">{order.customerId}</TableCell>
                  <TableCell>
                     <Badge
                         variant={

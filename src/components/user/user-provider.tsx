@@ -13,13 +13,13 @@ const CONSUMER_USER: User = {
     role: 'Consumer',
     name: 'Consumer User',
     email: 'consumer@foresight.com',
-    membershipId: `FS-${Math.floor(100000 + Math.random() * 900000)}`
+    customerId: `FS-${Math.floor(100000 + Math.random() * 900000)}`
 };
 
 
 interface UserContextType {
   user: User;
-  setUser: (settings: { role: UserRole, membershipId?: string }) => void;
+  setUser: (settings: { role: UserRole, customerId?: string }) => void;
 }
 
 const UserContext = React.createContext<UserContextType | undefined>(undefined);
@@ -35,12 +35,12 @@ export function useUser() {
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const [user, setCurrentUser] = React.useState<User>(ADMIN_USER);
 
-  const setUser = (settings: { role: UserRole, membershipId?: string }) => {
+  const setUser = (settings: { role: UserRole, customerId?: string }) => {
     if (settings.role === 'Admin') {
         setCurrentUser(ADMIN_USER);
     } else {
-        const newId = settings.membershipId || CONSUMER_USER.membershipId;
-        setCurrentUser({ ...CONSUMER_USER, membershipId: newId });
+        const newId = settings.customerId || user.customerId || `FS-${Math.floor(100000 + Math.random() * 900000)}`;
+        setCurrentUser({ ...CONSUMER_USER, customerId: newId });
     }
   };
 

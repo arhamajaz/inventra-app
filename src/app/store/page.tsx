@@ -5,7 +5,6 @@ import { AppHeader } from '@/components/layout/header';
 import { AppSidebar } from '@/components/layout/sidebar';
 import { ProductGrid } from '@/components/store/product-grid';
 import { ShoppingCart } from '@/components/store/shopping-cart';
-import { MembershipCard } from '@/components/user/membership-card';
 import { useUser } from '@/components/user/user-provider';
 import { FeedbackCard } from '@/components/user/feedback-card';
 
@@ -22,7 +21,6 @@ export default function StorePage() {
             <h1 className="text-2xl font-semibold">Consumer Store</h1>
             {user.role === 'Consumer' && (
                 <div className="space-y-4">
-                    <MembershipCard />
                     <FeedbackCard />
                 </div>
             )}

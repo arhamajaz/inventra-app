@@ -358,11 +358,11 @@ export const products: Product[] = [
 
 
 export const orders: Order[] = [
-  { id: 'ORD-001', customerName: 'Rohan Sharma', membershipId: 'FS-458921', items: [{ productName: 'Britannia Good Day Butter Cookies (200g)', quantity: 2 }, { productName: 'Tata Tea Gold (500g)', quantity: 1 }], status: 'Shipped', date: '2023-06-15' },
-  { id: 'ORD-002', customerName: 'Priya Verma', membershipId: 'FS-102384', items: [{ productName: 'Redmi Note 13 Pro (8GB RAM, 128GB Storage)', quantity: 1 }], status: 'Delivered', date: '2023-06-14' },
-  { id: 'ORD-003', customerName: 'Anjali Mehta', membershipId: 'FS-983471', items: [{ productName: 'Dettol Original Soap (125g, Pack of 4)', quantity: 1 }, { productName: 'Lizol Disinfectant Floor Cleaner (1L)', quantity: 1 }], status: 'Packed', date: '2023-06-16' },
-  { id: 'ORD-004', customerName: 'Vikram Singh', membershipId: 'FS-234567', items: [{ productName: 'Aashirvaad Atta (5kg)', quantity: 2 }], status: 'Processing', date: '2023-06-16' },
-  { id: 'ORD-005', customerName: 'Sunita Reddy', membershipId: 'FS-876543', items: [{ productName: 'Lay\'s Classic Salted Potato Chips (52g)', quantity: 10 }], status: 'Shipped', date: '2023-06-15' },
+  { id: 'ORD-001', customerName: 'Rohan Sharma', customerId: 'FS-458921', items: [{ productName: 'Britannia Good Day Butter Cookies (200g)', quantity: 2 }, { productName: 'Tata Tea Gold (500g)', quantity: 1 }], status: 'Shipped', date: '2023-06-15' },
+  { id: 'ORD-002', customerName: 'Priya Verma', customerId: 'FS-102384', items: [{ productName: 'Redmi Note 13 Pro (8GB RAM, 128GB Storage)', quantity: 1 }], status: 'Delivered', date: '2023-06-14' },
+  { id: 'ORD-003', customerName: 'Anjali Mehta', customerId: 'FS-983471', items: [{ productName: 'Dettol Original Soap (125g, Pack of 4)', quantity: 1 }, { productName: 'Lizol Disinfectant Floor Cleaner (1L)', quantity: 1 }], status: 'Packed', date: '2023-06-16' },
+  { id: 'ORD-004', customerName: 'Vikram Singh', customerId: 'FS-234567', items: [{ productName: 'Aashirvaad Atta (5kg)', quantity: 2 }], status: 'Processing', date: '2023-06-16' },
+  { id: 'ORD-005', customerName: 'Sunita Reddy', customerId: 'FS-876543', items: [{ productName: 'Lay\'s Classic Salted Potato Chips (52g)', quantity: 10 }], status: 'Shipped', date: '2023-06-15' },
 ];
 
 export const salesData = [

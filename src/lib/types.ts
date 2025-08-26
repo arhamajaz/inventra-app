@@ -20,7 +20,7 @@ export interface Product {
 export interface Order {
   id: string;
   customerName: string;
-  membershipId?: string;
+  customerId?: string;
   items: { productName: string; quantity: number }[];
   status: 'Processing' | 'Packed' | 'Shipped' | 'Delivered';
   date: string;
@@ -32,5 +32,5 @@ export interface User {
     role: UserRole;
     name: string;
     email: string;
-    membershipId?: string;
+    customerId?: string;
 }
