@@ -7,7 +7,7 @@ export interface Sale {
 export interface Product {
   id: string;
   name: string;
-  category: 'FMCG' | 'Pharmaceuticals' | 'Electronics' | 'Grocery' | 'Warehouse' | 'Stationery' | 'Dairy' | 'Personal Care' | 'Household' | 'Fashion';
+  category: 'FMCG' | 'Electronics' | 'Personal Care' | 'Household' | 'Grocery' | 'Dairy' | 'Fashion' | 'Warehouse' | 'Stationery';
   stock: number;
   capacity: number;
   threshold: number;
@@ -20,6 +20,7 @@ export interface Product {
 export interface Order {
   id: string;
   customerName: string;
+  membershipId?: string;
   items: { productName: string; quantity: number }[];
   status: 'Processing' | 'Packed' | 'Shipped' | 'Delivered';
   date: string;

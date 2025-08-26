@@ -1,12 +1,16 @@
+
 'use server';
 
 import { forecastDemand, ForecastDemandInput, ForecastDemandOutput } from '@/ai/flows/demand-forecasting';
 import { calculateRestockThreshold, CalculateRestockThresholdInput, CalculateRestockThresholdOutput } from '@/ai/flows/restock-alert-threshold';
 import { identifyProduct, IdentifyProductInput, IdentifyProductOutput } from '@/ai/flows/product-identification';
+import { processUserFeedback, ProcessFeedbackInput, ProcessFeedbackOutput } from '@/ai/flows/process-feedback';
 
 type ForecastResult = ForecastDemandOutput | { error: string };
 type RestockResult = CalculateRestockThresholdOutput | { error: string };
 type IdentifyResult = IdentifyProductOutput | { error: string };
+type FeedbackResult = ProcessFeedbackOutput | { error: string };
+
 
 export async function getDemandForecast(input: ForecastDemandInput): Promise<ForecastResult> {
   try {
@@ -40,3 +44,14 @@ export async function getProductIdentification(input: IdentifyProductInput): Pro
     return { error: message };
   }
 }
+
+export async function processFeedback(input: ProcessFeedbackInput): Promise<FeedbackResult> {
+    try {
+      const result = await processUserFeedback(input);
+      return result;
+    } catch (error) {
+      console.error('Processing feedback failed:', error);
+      const message = error instanceof Error ? error.message : 'An unknown error occurred';
+      return { error: message };
+    }
+  }

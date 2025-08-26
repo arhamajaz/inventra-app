@@ -7,6 +7,7 @@ import { ProductGrid } from '@/components/store/product-grid';
 import { ShoppingCart } from '@/components/store/shopping-cart';
 import { MembershipCard } from '@/components/user/membership-card';
 import { useUser } from '@/components/user/user-provider';
+import { FeedbackCard } from '@/components/user/feedback-card';
 
 export default function StorePage() {
   const { user } = useUser();
@@ -19,7 +20,12 @@ export default function StorePage() {
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8 lg:grid-cols-3 xl:grid-cols-3">
           <div className="lg:col-span-2 space-y-4">
             <h1 className="text-2xl font-semibold">Consumer Store</h1>
-            {user.role === 'Consumer' && <MembershipCard />}
+            {user.role === 'Consumer' && (
+                <div className="space-y-4">
+                    <MembershipCard />
+                    <FeedbackCard />
+                </div>
+            )}
             <ProductGrid />
           </div>
           <div>

@@ -29,6 +29,8 @@ import { Avatar, AvatarFallback, AvatarImage } from '@/components/ui/avatar';
 import { usePathname } from 'next/navigation';
 import { useUser } from '../user/user-provider';
 import { Button } from '../ui/button';
+import { useToast } from '@/hooks/use-toast';
+import { useState } from 'react';
 
 const adminMenuItems = [
   { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
@@ -49,8 +51,26 @@ const consumerMenuItems = [
 export function AppSidebar() {
   const pathname = usePathname();
   const { user, setUser } = useUser();
+  const { toast } = useToast();
 
   const menuItems = user.role === 'Admin' ? adminMenuItems : consumerMenuItems;
+
+  const handleAdminClick = () => {
+    const password = prompt('Please enter admin password:');
+    if (password === 'admin') {
+      setUser({ role: 'Admin' });
+      toast({
+        title: 'Switched to Admin Role',
+        description: 'You now have admin privileges.',
+      });
+    } else {
+      toast({
+        variant: 'destructive',
+        title: 'Authentication Failed',
+        description: 'The password you entered is incorrect.',
+      });
+    }
+  };
 
 
   return (
@@ -100,7 +120,7 @@ export function AppSidebar() {
          <div className='p-2 space-y-2'>
             <p className='text-xs text-muted-foreground text-center'>Switch User Role</p>
             <div className='grid grid-cols-2 gap-2'>
-                 <Button variant={user.role === 'Admin' ? 'secondary' : 'ghost'} size="sm" onClick={() => setUser({role: 'Admin'})}>
+                 <Button variant={user.role === 'Admin' ? 'secondary' : 'ghost'} size="sm" onClick={handleAdminClick}>
                     <Crown className="mr-2 h-4 w-4" />
                     Admin
                 </Button>
