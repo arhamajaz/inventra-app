@@ -57,7 +57,7 @@ export function AppSidebar() {
 
   const handleAdminClick = () => {
     const password = prompt('Please enter admin password:');
-    if (password === 'admin') {
+    if (password === '1875') {
       setUser({ role: 'Admin' });
       toast({
         title: 'Switched to Admin Role',
