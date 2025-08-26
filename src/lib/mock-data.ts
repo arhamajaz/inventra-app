@@ -274,7 +274,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 70,
     price: 70,
-    imageUrl: "https://i.ibb.co/8Y0zJ8Q/fortune-sunflower-oil.png",
+    imageUrl: "https://i.ibb.co/nMSdwb8/catch-black-pepper.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 20 + Math.floor(Math.random() * 5) })),
   },
   {
@@ -318,7 +318,7 @@ export const products: Product[] = [
     capacity: 800,
     threshold: 140,
     price: 180,
-    imageUrl: "https://i.ibb.co/3sS86y8/dettol-soap.png",
+    imageUrl: "https://i.ibb.co/tZ2x8rV/dettol-soap.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 40 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -329,7 +329,7 @@ export const products: Product[] = [
     capacity: 500,
     threshold: 80,
     price: 140,
-    imageUrl: "https://i.ibb.co/bX1sC4f/himalaya-neem-facewash.png",
+    imageUrl: "https://i.ibb.co/5cWJc9g/himalaya-neem-facewash.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 25 + Math.floor(Math.random() * 8) })),
   },
   {
@@ -340,7 +340,7 @@ export const products: Product[] = [
     capacity: 700,
     threshold: 120,
     price: 180,
-    imageUrl: "https://i.ibb.co/GcJ33T3/lizol-floor-cleaner.png",
+    imageUrl: "https://i.ibb.co/sKkY9jD/lizol-floor-cleaner.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 35 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -351,7 +351,7 @@ export const products: Product[] = [
     capacity: 600,
     threshold: 110,
     price: 120,
-    imageUrl: "https://i.ibb.co/qj5b65L/harpic-toilet-cleaner.png",
+    imageUrl: "https://i.ibb.co/7nB3rGp/harpic-toilet-cleaner.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 30 + Math.floor(Math.random() * 10) })),
   }
 ];
