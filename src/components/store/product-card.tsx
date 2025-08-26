@@ -51,9 +51,10 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
             <IndianRupee className="h-5 w-5" />
             <span>{product.price}</span>
         </div>
-        <p className="text-sm text-muted-foreground mt-2">
-          In Stock: <Badge variant={product.stock > 0 ? 'default' : 'destructive'} className={product.stock > 0 ? 'bg-green-500/20 text-green-700 border-green-500/30' : ''}>{product.stock > 0 ? 'Available' : 'Out of stock'}</Badge>
-        </p>
+        <div className="text-sm text-muted-foreground mt-2 flex items-center gap-2">
+          <span>In Stock:</span>
+          <Badge variant={product.stock > 0 ? 'default' : 'destructive'} className={product.stock > 0 ? 'bg-green-500/20 text-green-700 border-green-500/30' : ''}>{product.stock > 0 ? 'Available' : 'Out of stock'}</Badge>
+        </div>
       </CardContent>
       <CardFooter className="flex justify-between">
         <Dialog>
