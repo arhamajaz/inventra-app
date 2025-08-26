@@ -94,7 +94,7 @@ export function AppSidebar() {
         <div className="flex items-center gap-3">
           <Package className="size-8 text-primary" />
           <h1 className="text-xl font-semibold text-sidebar-foreground">
-            Foresight
+            Inven-tra
           </h1>
         </div>
       </SidebarHeader>

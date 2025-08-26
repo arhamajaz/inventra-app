@@ -8,7 +8,7 @@ import { CartProvider } from "@/components/store/shopping-cart-provider";
 import { UserProvider } from "@/components/user/user-provider";
 
 export const metadata: Metadata = {
-  title: "Foresight",
+  title: "Inven-tra",
   description: "Intelligent Inventory Management",
 };
 

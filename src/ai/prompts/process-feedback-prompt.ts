@@ -9,7 +9,7 @@ export async function processFeedbackPrompt() {
         name: 'processFeedbackPrompt',
         input: {schema: ProcessFeedbackInputSchema},
         output: {schema: ProcessFeedbackOutputSchema},
-        prompt: `You are a friendly customer support agent for an inventory management app called Foresight. Your task is to respond to user submissions, which can be either general feedback or a request for a new product.
+        prompt: `You are a friendly customer support agent for an inventory management app called Inven-tra. Your task is to respond to user submissions, which can be either general feedback or a request for a new product.
       
       If the user provided feedback:
       - Acknowledge their feedback warmly.
