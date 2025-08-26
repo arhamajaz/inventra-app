@@ -10,7 +10,7 @@ export const products: Product[] = [
     capacity: 500,
     threshold: 50,
     price: 40,
-    imageUrl: 'https://picsum.photos/200/200?random=1',
+    imageUrl: 'https://picsum.photos/id/1/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 10 + Math.floor(Math.random() * 15) })),
   },
   {
@@ -21,7 +21,7 @@ export const products: Product[] = [
     capacity: 300,
     threshold: 40,
     price: 150,
-    imageUrl: 'https://picsum.photos/200/200?random=2',
+    imageUrl: 'https://picsum.photos/id/2/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 5 + Math.floor(Math.random() * 10) })),
   },
    {
@@ -32,7 +32,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 50,
     price: 90,
-    imageUrl: 'https://picsum.photos/200/200?random=9',
+    imageUrl: 'https://picsum.photos/id/9/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 12 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -43,7 +43,7 @@ export const products: Product[] = [
     capacity: 200,
     threshold: 30,
     price: 99,
-    imageUrl: 'https://picsum.photos/200/200?random=3',
+    imageUrl: 'https://picsum.photos/id/3/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 2 + Math.floor(Math.random() * 5) })),
   },
   {
@@ -54,7 +54,7 @@ export const products: Product[] = [
     capacity: 150,
     threshold: 20,
     price: 120,
-    imageUrl: 'https://picsum.photos/200/200?random=10',
+    imageUrl: 'https://picsum.photos/id/10/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 4 + Math.floor(Math.random() * 6) })),
   },
   {
@@ -65,7 +65,7 @@ export const products: Product[] = [
     capacity: 250,
     threshold: 50,
     price: 599,
-    imageUrl: 'https://picsum.photos/200/200?random=4',
+    imageUrl: 'https://picsum.photos/id/4/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 8 + Math.floor(Math.random() * 12) })),
   },
    {
@@ -76,7 +76,7 @@ export const products: Product[] = [
     capacity: 200,
     threshold: 30,
     price: 1299,
-    imageUrl: 'https://picsum.photos/200/200?random=11',
+    imageUrl: 'https://picsum.photos/id/11/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 6 + Math.floor(Math.random() * 8) })),
   },
   {
@@ -87,7 +87,7 @@ export const products: Product[] = [
     capacity: 1000,
     threshold: 100,
     price: 120,
-    imageUrl: 'https://picsum.photos/200/200?random=5',
+    imageUrl: 'https://picsum.photos/id/5/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 20 + Math.floor(Math.random() * 25) })),
   },
   {
@@ -98,7 +98,7 @@ export const products: Product[] = [
     capacity: 800,
     threshold: 150,
     price: 150,
-    imageUrl: 'https://picsum.photos/200/200?random=12',
+    imageUrl: 'https://picsum.photos/id/12/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 25 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -109,7 +109,7 @@ export const products: Product[] = [
     capacity: 2000,
     threshold: 200,
     price: 25,
-    imageUrl: 'https://picsum.photos/200/200?random=6',
+    imageUrl: 'https://picsum.photos/id/6/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 50 + Math.floor(Math.random() * 40) })),
   },
   {
@@ -120,7 +120,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 50,
     price: 50,
-    imageUrl: 'https://picsum.photos/200/200?random=7',
+    imageUrl: 'https://picsum.photos/id/7/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 15 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -131,7 +131,7 @@ export const products: Product[] = [
     capacity: 250,
     threshold: 50,
     price: 20,
-    imageUrl: 'https://picsum.photos/200/200?random=8',
+    imageUrl: 'https://picsum.photos/id/8/200/200',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 30 + Math.floor(Math.random() * 20) })),
   },
 ];
