@@ -1,8 +1,10 @@
+
 import type { Metadata } from "next";
 import "./globals.css";
 import { cn } from "@/lib/utils";
 import { Toaster } from "@/components/ui/toaster";
 import { SidebarProvider } from "@/components/ui/sidebar";
+import { CartProvider } from "@/components/store/shopping-cart-provider";
 
 export const metadata: Metadata = {
   title: "Foresight",
@@ -23,7 +25,9 @@ export default function RootLayout({
       </head>
       <body className={cn("font-body antialiased h-full")}>
         <SidebarProvider>
-          {children}
+          <CartProvider>
+            {children}
+          </CartProvider>
         </SidebarProvider>
         <Toaster />
       </body>

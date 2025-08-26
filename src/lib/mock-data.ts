@@ -1,3 +1,4 @@
+
 import type { Product, Order } from './types';
 
 export const products: Product[] = [
@@ -9,7 +10,7 @@ export const products: Product[] = [
     capacity: 500,
     threshold: 50,
     price: 40,
-    imageUrl: 'https://placehold.co/100x100.png',
+    imageUrl: 'https://picsum.photos/200/200?random=1',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 10 + Math.floor(Math.random() * 15) })),
   },
   {
@@ -20,8 +21,19 @@ export const products: Product[] = [
     capacity: 300,
     threshold: 40,
     price: 150,
-    imageUrl: 'https://placehold.co/100x100.png',
+    imageUrl: 'https://picsum.photos/200/200?random=2',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 5 + Math.floor(Math.random() * 10) })),
+  },
+   {
+    id: 'prod_009',
+    name: 'Coconut Oil',
+    category: 'FMCG',
+    stock: 120,
+    capacity: 400,
+    threshold: 50,
+    price: 90,
+    imageUrl: 'https://picsum.photos/200/200?random=9',
+    historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 12 + Math.floor(Math.random() * 10) })),
   },
   {
     id: 'prod_003',
@@ -31,8 +43,19 @@ export const products: Product[] = [
     capacity: 200,
     threshold: 30,
     price: 99,
-    imageUrl: 'https://placehold.co/100x100.png',
+    imageUrl: 'https://picsum.photos/200/200?random=3',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 2 + Math.floor(Math.random() * 5) })),
+  },
+  {
+    id: 'prod_010',
+    name: 'Antacid Syrup',
+    category: 'Pharmaceuticals',
+    stock: 50,
+    capacity: 150,
+    threshold: 20,
+    price: 120,
+    imageUrl: 'https://picsum.photos/200/200?random=10',
+    historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 4 + Math.floor(Math.random() * 6) })),
   },
   {
     id: 'prod_004',
@@ -42,8 +65,19 @@ export const products: Product[] = [
     capacity: 250,
     threshold: 50,
     price: 599,
-    imageUrl: 'https://placehold.co/100x100.png',
+    imageUrl: 'https://picsum.photos/200/200?random=4',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 8 + Math.floor(Math.random() * 12) })),
+  },
+   {
+    id: 'prod_011',
+    name: 'Power Bank',
+    category: 'Electronics',
+    stock: 90,
+    capacity: 200,
+    threshold: 30,
+    price: 1299,
+    imageUrl: 'https://picsum.photos/200/200?random=11',
+    historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 6 + Math.floor(Math.random() * 8) })),
   },
   {
     id: 'prod_005',
@@ -53,8 +87,19 @@ export const products: Product[] = [
     capacity: 1000,
     threshold: 100,
     price: 120,
-    imageUrl: 'https://placehold.co/100x100.png',
+    imageUrl: 'https://picsum.photos/200/200?random=5',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 20 + Math.floor(Math.random() * 25) })),
+  },
+  {
+    id: 'prod_012',
+    name: 'Lentils (Toor Dal) (1kg)',
+    category: 'Grocery',
+    stock: 300,
+    capacity: 800,
+    threshold: 150,
+    price: 150,
+    imageUrl: 'https://picsum.photos/200/200?random=12',
+    historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 25 + Math.floor(Math.random() * 20) })),
   },
   {
     id: 'prod_006',
@@ -64,7 +109,7 @@ export const products: Product[] = [
     capacity: 2000,
     threshold: 200,
     price: 25,
-    imageUrl: 'https://placehold.co/100x100.png',
+    imageUrl: 'https://picsum.photos/200/200?random=6',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 50 + Math.floor(Math.random() * 40) })),
   },
   {
@@ -75,7 +120,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 50,
     price: 50,
-    imageUrl: 'https://placehold.co/100x100.png',
+    imageUrl: 'https://picsum.photos/200/200?random=7',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 15 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -86,7 +131,7 @@ export const products: Product[] = [
     capacity: 250,
     threshold: 50,
     price: 20,
-    imageUrl: 'https://placehold.co/100x100.png',
+    imageUrl: 'https://picsum.photos/200/200?random=8',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 30 + Math.floor(Math.random() * 20) })),
   },
 ];

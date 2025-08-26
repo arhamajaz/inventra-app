@@ -1,3 +1,4 @@
+
 'use client';
 import Link from 'next/link';
 import {
@@ -9,6 +10,7 @@ import {
   Users,
   Package,
   Wand2,
+  ShoppingCart,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -25,6 +27,7 @@ import { usePathname } from 'next/navigation';
 
 const menuItems = [
   { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { href: '/store', icon: ShoppingCart, label: 'Consumer Store' },
   { href: '#', icon: Boxes, label: 'Inventory' },
   { href: '#', icon: Truck, label: 'Orders' },
   { href: '/analytics', icon: BarChart3, label: 'Analytics' },
