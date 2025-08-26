@@ -10,7 +10,7 @@ export const products: Product[] = [
     capacity: 500,
     threshold: 50,
     price: 180,
-    imageUrl: 'https://picsum.photos/seed/himalaya-facewash/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=Neem+Face+Wash',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 18 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -21,7 +21,7 @@ export const products: Product[] = [
     capacity: 300,
     threshold: 40,
     price: 68,
-    imageUrl: 'https://picsum.photos/seed/dove-soap/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=Dove+Soap',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 30 + Math.floor(Math.random() * 15) })),
   },
    {
@@ -32,7 +32,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 50,
     price: 260,
-    imageUrl: 'https://picsum.photos/seed/parachute-oil/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=Parachute+Oil',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 15 + Math.floor(Math.random() * 8) })),
   },
   {
@@ -43,7 +43,7 @@ export const products: Product[] = [
     capacity: 200,
     threshold: 30,
     price: 30,
-    imageUrl: 'https://picsum.photos/seed/crocin-tablets/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=Crocin',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 5 + Math.floor(Math.random() * 7) })),
   },
   {
@@ -54,7 +54,7 @@ export const products: Product[] = [
     capacity: 150,
     threshold: 20,
     price: 135,
-    imageUrl: 'https://picsum.photos/seed/digene-syrup/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=Digene',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 8 + Math.floor(Math.random() * 5) })),
   },
   {
@@ -65,7 +65,7 @@ export const products: Product[] = [
     capacity: 250,
     threshold: 50,
     price: 349,
-    imageUrl: 'https://picsum.photos/seed/boat-cable/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=boAt+Cable',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 10 + Math.floor(Math.random() * 10) })),
   },
    {
@@ -76,7 +76,7 @@ export const products: Product[] = [
     capacity: 200,
     threshold: 30,
     price: 2149,
-    imageUrl: 'https://picsum.photos/seed/mi-powerbank/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=MI+Power+Bank',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 7 + Math.floor(Math.random() * 6) })),
   },
   {
@@ -87,7 +87,7 @@ export const products: Product[] = [
     capacity: 1000,
     threshold: 100,
     price: 295,
-    imageUrl: 'https://picsum.photos/seed/aashirvaad-atta/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=Aashirvaad+Atta',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 25 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -98,7 +98,7 @@ export const products: Product[] = [
     capacity: 800,
     threshold: 150,
     price: 210,
-    imageUrl: 'https://picsum.photos/seed/tata-dal/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=Tata+Toor+Dal',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 30 + Math.floor(Math.random() * 18) })),
   },
   {
@@ -109,7 +109,7 @@ export const products: Product[] = [
     capacity: 2000,
     threshold: 200,
     price: 899,
-    imageUrl: 'https://picsum.photos/seed/shipping-boxes/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=Shipping+Boxes',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 10 + Math.floor(Math.random() * 5) })),
   },
   {
@@ -120,7 +120,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 50,
     price: 100,
-    imageUrl: 'https://picsum.photos/seed/classmate-pens/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=Classmate+Pens',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 20 + Math.floor(Math.random() * 12) })),
   },
   {
@@ -131,7 +131,7 @@ export const products: Product[] = [
     capacity: 250,
     threshold: 50,
     price: 20,
-    imageUrl: 'https://picsum.photos/seed/lays-chips/200/200',
+    imageUrl: 'https://placehold.co/200x200/cae9ff/000000?text=Lays+Chips',
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 40 + Math.floor(Math.random() * 25) })),
   },
 ];
