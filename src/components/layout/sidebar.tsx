@@ -31,6 +31,17 @@ import { useUser } from '../user/user-provider';
 import { Button } from '../ui/button';
 import { useToast } from '@/hooks/use-toast';
 import { useState } from 'react';
+import {
+  Dialog,
+  DialogContent,
+  DialogDescription,
+  DialogFooter,
+  DialogHeader,
+  DialogTitle,
+  DialogTrigger,
+} from '@/components/ui/dialog';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
 
 const adminMenuItems = [
   { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
@@ -52,23 +63,27 @@ export function AppSidebar() {
   const pathname = usePathname();
   const { user, setUser } = useUser();
   const { toast } = useToast();
+  const [adminDialogOpen, setAdminDialogOpen] = useState(false);
+  const [password, setPassword] = useState('');
 
   const menuItems = user.role === 'Admin' ? adminMenuItems : consumerMenuItems;
 
-  const handleAdminClick = () => {
-    const password = prompt('Please enter admin password:');
+  const handleAdminAuth = () => {
     if (password === '1875') {
       setUser({ role: 'Admin' });
       toast({
         title: 'Switched to Admin Role',
         description: 'You now have admin privileges.',
       });
+      setAdminDialogOpen(false);
+      setPassword('');
     } else {
       toast({
         variant: 'destructive',
         title: 'Authentication Failed',
         description: 'The password you entered is incorrect.',
       });
+      setPassword('');
     }
   };
 
@@ -120,10 +135,41 @@ export function AppSidebar() {
          <div className='p-2 space-y-2'>
             <p className='text-xs text-muted-foreground text-center'>Switch User Role</p>
             <div className='grid grid-cols-2 gap-2'>
-                 <Button variant={user.role === 'Admin' ? 'secondary' : 'ghost'} size="sm" onClick={handleAdminClick}>
-                    <Crown className="mr-2 h-4 w-4" />
-                    Admin
-                </Button>
+                 <Dialog open={adminDialogOpen} onOpenChange={setAdminDialogOpen}>
+                    <DialogTrigger asChild>
+                        <Button variant={user.role === 'Admin' ? 'secondary' : 'ghost'} size="sm">
+                            <Crown className="mr-2 h-4 w-4" />
+                            Admin
+                        </Button>
+                    </DialogTrigger>
+                    <DialogContent className="sm:max-w-[425px]">
+                        <DialogHeader>
+                        <DialogTitle>Admin Access</DialogTitle>
+                        <DialogDescription>
+                            Enter the password to switch to the admin role.
+                        </DialogDescription>
+                        </DialogHeader>
+                        <div className="grid gap-4 py-4">
+                        <div className="grid grid-cols-4 items-center gap-4">
+                            <Label htmlFor="password-input" className="text-right">
+                            Password
+                            </Label>
+                            <Input
+                            id="password-input"
+                            type="password"
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
+                            className="col-span-3"
+                            onKeyDown={(e) => e.key === 'Enter' && handleAdminAuth()}
+                            />
+                        </div>
+                        </div>
+                        <DialogFooter>
+                        <Button type="submit" onClick={handleAdminAuth}>Authenticate</Button>
+                        </DialogFooter>
+                    </DialogContent>
+                 </Dialog>
+
                 <Button variant={user.role === 'Consumer' ? 'secondary' : 'ghost'} size="sm" onClick={() => setUser({role: 'Consumer'})}>
                      <User className="mr-2 h-4 w-4" />
                      Consumer
