@@ -4,7 +4,9 @@
 import { forecastDemand, ForecastDemandInput, ForecastDemandOutput } from '@/ai/flows/demand-forecasting';
 import { calculateRestockThreshold, CalculateRestockThresholdInput, CalculateRestockThresholdOutput } from '@/ai/flows/restock-alert-threshold';
 import { identifyProduct, IdentifyProductInput, IdentifyProductOutput } from '@/ai/flows/product-identification';
-import { processUserFeedback, ProcessFeedbackInput, ProcessFeedbackOutput } from '@/ai/flows/process-feedback';
+import { processUserFeedback } from '@/ai/flows/process-feedback';
+import type { ProcessFeedbackInput, ProcessFeedbackOutput } from '@/lib/feedback-types';
+
 
 type ForecastResult = ForecastDemandOutput | { error: string };
 type RestockResult = CalculateRestockThresholdOutput | { error: string };
