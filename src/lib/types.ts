@@ -6,7 +6,7 @@ export interface Sale {
 export interface Product {
   id: string;
   name: string;
-  category: 'FMCG' | 'Pharmaceuticals' | 'Electronics' | 'Grocery' | 'Warehouse' | 'Stationery';
+  category: 'FMCG' | 'Pharmaceuticals' | 'Electronics' | 'Grocery' | 'Warehouse' | 'Stationery' | 'Dairy' | 'Personal Care' | 'Household';
   stock: number;
   capacity: number;
   threshold: number;
