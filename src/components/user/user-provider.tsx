@@ -6,13 +6,13 @@ import * as React from 'react';
 const ADMIN_USER: User = {
     role: 'Admin',
     name: 'Admin User',
-    email: 'admin@foresight.com',
+    email: 'admin@inven-tra.com',
 };
 
 const CONSUMER_USER: User = {
     role: 'Consumer',
     name: 'Consumer User',
-    email: 'consumer@foresight.com',
+    email: 'consumer@inven-tra.com',
     customerId: `FS-${Math.floor(100000 + Math.random() * 900000)}`
 };
 

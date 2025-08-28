@@ -10,7 +10,7 @@ export const products: Product[] = [
     capacity: 3000,
     threshold: 500,
     price: 25,
-    imageUrl: "https://i.ibb.co/3sS86y8/parle-g-biscuits.png",
+    imageUrl: "https://i.ibb.co/L9t0bJ8/parle-g-original-biscuits-250g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 150 + Math.floor(Math.random() * 50) })),
   },
   {
@@ -21,7 +21,7 @@ export const products: Product[] = [
     capacity: 2000,
     threshold: 350,
     price: 50,
-    imageUrl: "https://i.ibb.co/bX1sC4f/britannia-good-day.png",
+    imageUrl: "https://i.ibb.co/mHvqM8J/britannia-good-day-butter-cookies-200g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 80 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -32,7 +32,7 @@ export const products: Product[] = [
     capacity: 1500,
     threshold: 250,
     price: 40,
-    imageUrl: "https://i.ibb.co/GcJ33T3/haldirams-aloo-bhujia.png",
+    imageUrl: "https://i.ibb.co/GcJ33T3/haldiram-s-aloo-bhujia-150g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 60 + Math.floor(Math.random() * 15) })),
   },
   {
@@ -43,7 +43,7 @@ export const products: Product[] = [
     capacity: 4000,
     threshold: 600,
     price: 20,
-    imageUrl: "https://i.ibb.co/qj5b65L/lays-classic.png",
+    imageUrl: "https://i.ibb.co/qj5b65L/lay-s-classic-salted-potato-chips-52g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 200 + Math.floor(Math.random() * 70) })),
   },
   {
@@ -54,7 +54,7 @@ export const products: Product[] = [
     capacity: 2000,
     threshold: 300,
     price: 40,
-    imageUrl: "https://i.ibb.co/VMywDWs/coca-cola.png",
+    imageUrl: "https://i.ibb.co/VMywDWs/coca-cola-soft-drink-600ml.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 100 + Math.floor(Math.random() * 30) })),
   },
   {
@@ -65,7 +65,7 @@ export const products: Product[] = [
     capacity: 1000,
     threshold: 150,
     price: 100,
-    imageUrl: "https://i.ibb.co/Xz9J2dm/frooti-mango.png",
+    imageUrl: "https://i.ibb.co/Xz9J2dm/frooti-mango-drink-1l.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 50 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -76,7 +76,7 @@ export const products: Product[] = [
     capacity: 1000,
     threshold: 180,
     price: 280,
-    imageUrl: "https://i.ibb.co/D9pnp1N/tata-tea-gold.png",
+    imageUrl: "https://i.ibb.co/D9pnp1N/tata-tea-gold-500g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 40 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -87,7 +87,7 @@ export const products: Product[] = [
     capacity: 700,
     threshold: 120,
     price: 160,
-    imageUrl: "https://i.ibb.co/RSCyG9R/nescafe-classic.png",
+    imageUrl: "https://i.ibb.co/RSCyG9R/nescafe-classic-instant-coffee-100g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 30 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -98,7 +98,7 @@ export const products: Product[] = [
     capacity: 5000,
     threshold: 800,
     price: 15,
-    imageUrl: "https://i.ibb.co/XSCxS2g/maggi-noodles.png",
+    imageUrl: "https://i.ibb.co/XSCxS2g/maggi-2-minute-noodles-masala-70g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 250 + Math.floor(Math.random() * 80) })),
   },
   {
@@ -109,7 +109,7 @@ export const products: Product[] = [
     capacity: 1200,
     threshold: 220,
     price: 250,
-    imageUrl: "https://i.ibb.co/Hhzj1K5/amul-butter.png",
+    imageUrl: "https://i.ibb.co/Hhzj1K5/amul-butter-500g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 60 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -120,7 +120,7 @@ export const products: Product[] = [
     capacity: 1000,
     threshold: 160,
     price: 280,
-    imageUrl: "https://i.ibb.co/VJxB8z1/aashirvaad-atta.png",
+    imageUrl: "https://i.ibb.co/VJxB8z1/aashirvaad-atta-5kg.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 50 + Math.floor(Math.random() * 15) })),
   },
   {
@@ -131,7 +131,7 @@ export const products: Product[] = [
     capacity: 800,
     threshold: 150,
     price: 120,
-    imageUrl: "https://i.ibb.co/dDThc0H/daawat-basmati-rice.png",
+    imageUrl: "https://i.ibb.co/dDThc0H/daawat-basmati-rice-1kg.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 45 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -142,7 +142,7 @@ export const products: Product[] = [
     capacity: 700,
     threshold: 120,
     price: 140,
-    imageUrl: "https://i.ibb.co/mSChf84/tata-sampann-toor-dal.png",
+    imageUrl: "https://i.ibb.co/mSChf84/tata-sampann-toor-dal-1kg.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 40 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -153,7 +153,7 @@ export const products: Product[] = [
     capacity: 600,
     threshold: 110,
     price: 160,
-    imageUrl: "https://i.ibb.co/8Y0zJ8Q/fortune-sunflower-oil.png",
+    imageUrl: "https://i.ibb.co/8Y0zJ8Q/fortune-refined-sunflower-oil-1l.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 35 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -164,7 +164,7 @@ export const products: Product[] = [
     capacity: 1200,
     threshold: 200,
     price: 45,
-    imageUrl: "https://i.ibb.co/fDYs4z3/sugar.png",
+    imageUrl: "https://i.ibb.co/fDYs4z3/sugar-1kg.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 70 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -175,7 +175,7 @@ export const products: Product[] = [
     capacity: 1500,
     threshold: 240,
     price: 20,
-    imageUrl: "https://i.ibb.co/SnsyT7M/salt.png",
+    imageUrl: "https://i.ibb.co/SnsyT7M/salt-1kg.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 80 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -186,7 +186,7 @@ export const products: Product[] = [
     capacity: 2500,
     threshold: 400,
     price: 60,
-    imageUrl: "https://i.ibb.co/0FDhBq1/cadbury-dairy-milk.png",
+    imageUrl: "https://i.ibb.co/0FDhBq1/cadbury-dairy-milk-chocolate-50g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 120 + Math.floor(Math.random() * 40) })),
   },
   {
@@ -197,7 +197,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 60,
     price: 180,
-    imageUrl: "https://i.ibb.co/r2gPzct/kwality-walls-vanilla.png",
+    imageUrl: "https://i.ibb.co/r2gPzct/kwality-walls-vanilla-ice-cream-700ml.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 20 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -208,7 +208,7 @@ export const products: Product[] = [
     capacity: 500,
     threshold: 80,
     price: 50,
-    imageUrl: "https://i.ibb.co/y4YJq2L/knorr-sweet-corn-soup.png",
+    imageUrl: "https://i.ibb.co/y4YJq2L/knorr-sweet-corn-veg-soup-43g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 25 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -219,7 +219,7 @@ export const products: Product[] = [
     capacity: 2000,
     threshold: 360,
     price: 15,
-    imageUrl: "https://i.ibb.co/gR2YyCg/yippee-noodles.png",
+    imageUrl: "https://i.ibb.co/gR2YyCg/sunfeast-yippee-magic-masala-noodles-70g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 100 + Math.floor(Math.random() * 30) })),
   },
   {
@@ -230,7 +230,7 @@ export const products: Product[] = [
     capacity: 700,
     threshold: 120,
     price: 35,
-    imageUrl: "https://i.ibb.co/yQjKMSL/mother-dairy-curd.png",
+    imageUrl: "https://i.ibb.co/yQjKMSL/mother-dairy-curd-400g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 40 + Math.floor(Math.random() * 15) })),
   },
   {
@@ -241,7 +241,7 @@ export const products: Product[] = [
     capacity: 500,
     threshold: 80,
     price: 40,
-    imageUrl: "https://i.ibb.co/mHvqM8J/britannia-whole-wheat-bread.png",
+    imageUrl: "https://i.ibb.co/bX1sC4f/britannia-whole-wheat-bread-400g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 30 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -252,7 +252,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 60,
     price: 120,
-    imageUrl: "https://i.ibb.co/2vWfTj8/dabur-honey.png",
+    imageUrl: "https://i.ibb.co/2vWfTj8/dabur-honey-250g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 20 + Math.floor(Math.random() * 5) })),
   },
   {
@@ -263,7 +263,7 @@ export const products: Product[] = [
     capacity: 300,
     threshold: 50,
     price: 150,
-    imageUrl: "https://i.ibb.co/zXjJtJ6/kissan-mixed-fruit-jam.png",
+    imageUrl: "https://i.ibb.co/zXjJtJ6/kissan-mixed-fruit-jam-500g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 15 + Math.floor(Math.random() * 5) })),
   },
   {
@@ -274,7 +274,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 70,
     price: 70,
-    imageUrl: "https://i.ibb.co/nMSdwb8/catch-black-pepper.png",
+    imageUrl: "https://i.ibb.co/nMSdwb8/catch-sprinklers-black-pepper-50g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 20 + Math.floor(Math.random() * 5) })),
   },
   {
@@ -285,7 +285,7 @@ export const products: Product[] = [
     capacity: 100,
     threshold: 15,
     price: 18999,
-    imageUrl: "https://i.ibb.co/zZ38YxT/redmi-note-13-pro.png",
+    imageUrl: "https://i.ibb.co/zZ38YxT/redmi-note-13-pro-8gb-ram-128gb-storage.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 5 + Math.floor(Math.random() * 3) })),
   },
   {
@@ -296,7 +296,7 @@ export const products: Product[] = [
     capacity: 80,
     threshold: 12,
     price: 25999,
-    imageUrl: "https://i.ibb.co/yQjKMSL/samsung-galaxy-a55.png",
+    imageUrl: "https://i.ibb.co/yQjKMSL/samsung-galaxy-a55-6gb-ram-128gb-storage.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 4 + Math.floor(Math.random() * 3) })),
   },
   {
@@ -307,7 +307,7 @@ export const products: Product[] = [
     capacity: 50,
     threshold: 8,
     price: 79900,
-    imageUrl: "https://i.ibb.co/1mZz3rv/iphone-15.png",
+    imageUrl: "https://i.ibb.co/1mZz3rv/apple-iphone-15-128gb.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 2 + Math.floor(Math.random() * 2) })),
   },
   {
@@ -318,7 +318,7 @@ export const products: Product[] = [
     capacity: 800,
     threshold: 140,
     price: 180,
-    imageUrl: "https://i.ibb.co/tZ2x8rV/dettol-soap.png",
+    imageUrl: "https://i.ibb.co/tZ2x8rV/dettol-original-soap-125g-pack-of-4.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 40 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -329,7 +329,7 @@ export const products: Product[] = [
     capacity: 500,
     threshold: 80,
     price: 140,
-    imageUrl: "https://i.ibb.co/5cWJc9g/himalaya-neem-facewash.png",
+    imageUrl: "https://i.ibb.co/5cWJc9g/himalaya-herbals-purifying-neem-face-wash-150ml.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 25 + Math.floor(Math.random() * 8) })),
   },
   {
@@ -340,7 +340,7 @@ export const products: Product[] = [
     capacity: 700,
     threshold: 120,
     price: 180,
-    imageUrl: "https://i.ibb.co/sKkY9jD/lizol-floor-cleaner.png",
+    imageUrl: "https://i.ibb.co/sKkY9jD/lizol-disinfectant-floor-cleaner-1l.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 35 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -351,7 +351,7 @@ export const products: Product[] = [
     capacity: 600,
     threshold: 110,
     price: 120,
-    imageUrl: "https://i.ibb.co/7nB3rGp/harpic-toilet-cleaner.png",
+    imageUrl: "https://i.ibb.co/7nB3rGp/harpic-powerplus-toilet-cleaner-750ml.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 30 + Math.floor(Math.random() * 10) })),
   }
 ];
