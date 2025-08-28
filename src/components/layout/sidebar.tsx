@@ -1,4 +1,5 @@
 
+
 'use client';
 import Link from 'next/link';
 import {
@@ -45,12 +46,10 @@ import { Label } from '../ui/label';
 
 const adminMenuItems = [
   { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
-  { href: '/store', icon: ShoppingCart, label: 'Consumer Store' },
   { href: '#', icon: Boxes, label: 'Inventory' },
-  { href: '#', icon: Truck, label: 'Orders' },
+  { href: '/orders', icon: Truck, label: 'Orders' },
   { href: '/analytics', icon: BarChart3, label: 'Analytics' },
   { href: '/ai-tools', icon: Wand2, label: 'AI Tools' },
-  { href: '/customers', icon: Users, label: 'Customers' },
   { href: '#', icon: Users, label: 'Suppliers' },
 ];
 
