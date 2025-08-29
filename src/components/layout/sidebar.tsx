@@ -49,7 +49,6 @@ const adminMenuItems = [
   { href: '/orders', icon: Truck, label: 'Orders' },
   { href: '/analytics', icon: BarChart3, label: 'Analytics' },
   { href: '/ai-tools', icon: Wand2, label: 'AI Tools' },
-  { href: '#', icon: Users, label: 'Suppliers' },
 ];
 
 const consumerMenuItems = [
