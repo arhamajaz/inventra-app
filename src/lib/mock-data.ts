@@ -296,7 +296,7 @@ export const products: Product[] = [
     capacity: 80,
     threshold: 12,
     price: 25999,
-    imageUrl: "https://i.ibb.co/yQjKMSL/samsung-galaxy-a55-6gb-ram-128gb-storage.png",
+    imageUrl: "https://i.ibb.co/yQjKMSL/mother-dairy-curd-400g.png",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 4 + Math.floor(Math.random() * 3) })),
   },
   {
@@ -373,3 +373,4 @@ export const salesData = [
   { name: 'May', sales: 550000 },
   { name: 'Jun', sales: 580000 },
 ];
+
