@@ -14,6 +14,7 @@ import {
   User,
   Crown,
   LogOut,
+  Receipt,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -53,6 +54,7 @@ const adminMenuItems = [
 
 const consumerMenuItems = [
     { href: '/store', icon: ShoppingCart, label: 'Consumer Store' },
+    { href: '/my-bill', icon: Receipt, label: 'My Bill'},
 ];
 
 

@@ -19,7 +19,7 @@ export function ShoppingCart() {
   const total = cart.reduce((acc, item) => acc + item.product.price * item.quantity, 0);
 
   return (
-    <Card className="sticky top-20">
+    <Card>
       <CardHeader>
         <CardTitle className="flex items-center gap-2">
             <ShoppingCartIcon />
@@ -29,7 +29,7 @@ export function ShoppingCart() {
       </CardHeader>
       <CardContent className="max-h-[50vh] overflow-y-auto">
         {cart.length === 0 ? (
-          <p className="text-muted-foreground text-center">Your cart is empty.</p>
+          <p className="text-muted-foreground text-center py-8">Your cart is empty.</p>
         ) : (
           <div className="space-y-4">
             {cart.map(item => (
