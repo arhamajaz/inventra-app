@@ -45,7 +45,7 @@ import { Label } from '../ui/label';
 
 const adminMenuItems = [
   { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
-  { href: '#', icon: Boxes, label: 'Inventory' },
+  { href: '/inventory', icon: Boxes, label: 'Inventory' },
   { href: '/orders', icon: Truck, label: 'Orders' },
   { href: '/analytics', icon: BarChart3, label: 'Analytics' },
   { href: '/ai-tools', icon: Wand2, label: 'AI Tools' },
