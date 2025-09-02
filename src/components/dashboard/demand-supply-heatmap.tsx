@@ -1,3 +1,4 @@
+
 'use client';
 import {
   Card,
@@ -8,8 +9,9 @@ import {
 } from '@/components/ui/card';
 import { products } from '@/lib/mock-data';
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
+import { cn } from '@/lib/utils';
 
-const getHeatmapColor = (ratio: number) => {
+const getHeatmapColorClass = (ratio: number) => {
   if (ratio < 0.25) return 'bg-destructive/80 hover:bg-destructive'; // Critically low
   if (ratio < 0.5) return 'bg-destructive/50 hover:bg-destructive/70'; // Low
   if (ratio < 0.75) return 'bg-yellow-400/50 hover:bg-yellow-400/70'; // Warning
@@ -33,8 +35,10 @@ export function DemandSupplyHeatmap() {
               return (
                 <Tooltip key={product.id}>
                   <TooltipTrigger asChild>
-                    <div className="aspect-square flex items-center justify-center rounded-lg transition-all"
-                         style={{ backgroundColor: getHeatmapColor(stockToSalesRatio).split(' ')[0].replace('bg-', 'var(--') }}>
+                    <div className={cn(
+                        "aspect-square flex items-center justify-center rounded-lg transition-all",
+                        getHeatmapColorClass(stockToSalesRatio)
+                      )}>
                     </div>
                   </TooltipTrigger>
                   <TooltipContent>
