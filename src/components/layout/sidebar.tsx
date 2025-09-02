@@ -17,6 +17,7 @@ import {
   LifeBuoy,
   UserPlus,
   Settings,
+  MessageSquare,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -51,6 +52,7 @@ import {
   DropdownMenuItem,
   DropdownMenuTrigger,
 } from '@/components/ui/dropdown-menu';
+import { FeedbackForm } from '../user/feedback-form';
 
 
 const adminMenuItems = [
@@ -74,6 +76,7 @@ export function AppSidebar() {
   const [adminDialogOpen, setAdminDialogOpen] = useState(false);
   const [password, setPassword] = useState('');
   const [supportDialogOpen, setSupportDialogOpen] = useState(false);
+  const [feedbackDialogOpen, setFeedbackDialogOpen] = useState(false);
 
   const menuItems = user.role === 'Admin' ? adminMenuItems : consumerMenuItems;
 
@@ -103,7 +106,7 @@ export function AppSidebar() {
         <div className="flex items-center gap-3">
           <Package className="size-8 text-primary" />
           <h1 className="text-xl font-semibold text-sidebar-foreground">
-            Inven-tra
+            Foresight
           </h1>
         </div>
       </SidebarHeader>
@@ -123,6 +126,27 @@ export function AppSidebar() {
               </SidebarMenuButton>
             </SidebarMenuItem>
           ))}
+           {user.role === 'Consumer' && (
+            <Dialog open={feedbackDialogOpen} onOpenChange={setFeedbackDialogOpen}>
+              <DialogTrigger asChild>
+                <SidebarMenuItem>
+                  <SidebarMenuButton tooltip={{ children: 'Feedback', side: 'right' }}>
+                    <MessageSquare />
+                    <span>Feedback</span>
+                  </SidebarMenuButton>
+                </SidebarMenuItem>
+              </DialogTrigger>
+              <DialogContent>
+                <DialogHeader>
+                  <DialogTitle>Feedback & Requests</DialogTitle>
+                  <DialogDescription>
+                    Share your thoughts or request a new product. We'd love to hear from you!
+                  </DialogDescription>
+                </DialogHeader>
+                <FeedbackForm onSubmitted={() => setFeedbackDialogOpen(false)} />
+              </DialogContent>
+            </Dialog>
+          )}
         </SidebarMenu>
       </SidebarContent>
       <SidebarSeparator />
@@ -210,12 +234,12 @@ export function AppSidebar() {
                   <DialogHeader>
                       <DialogTitle>Support & Help</DialogTitle>
                       <DialogDescription>
-                          Get help with Inven-tra.
+                          Get help with Foresight.
                       </DialogDescription>
                   </DialogHeader>
                   <div className="py-4">
                       <p>For any issues or questions, please contact our support team at:</p>
-                      <a href="mailto:support@inven-tra.com" className="text-primary hover:underline">support@inven-tra.com</a>
+                      <a href="mailto:support@foresight.com" className="text-primary hover:underline">support@foresight.com</a>
                       <p className="mt-4">You can also check our <Link href="#" className="text-primary hover:underline">FAQ section</Link> for common questions.</p>
                   </div>
                   <DialogFooter>

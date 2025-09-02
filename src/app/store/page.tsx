@@ -4,12 +4,8 @@
 import { AppHeader } from '@/components/layout/header';
 import { AppSidebar } from '@/components/layout/sidebar';
 import { ProductGrid } from '@/components/store/product-grid';
-import { useUser } from '@/components/user/user-provider';
-import { FeedbackCard } from '@/components/user/feedback-card';
 
 export default function StorePage() {
-  const { user } = useUser();
-
   return (
     <div className="flex min-h-screen w-full bg-muted/40">
       <AppSidebar />
@@ -18,11 +14,6 @@ export default function StorePage() {
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
           <div className="space-y-4">
             <h1 className="text-2xl font-semibold">Consumer Store</h1>
-            {user.role === 'Consumer' && (
-                <div className="space-y-4">
-                    <FeedbackCard />
-                </div>
-            )}
             <ProductGrid />
           </div>
         </main>
