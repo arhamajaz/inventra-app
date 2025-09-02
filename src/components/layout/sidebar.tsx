@@ -16,6 +16,7 @@ import {
   Receipt,
   LifeBuoy,
   UserPlus,
+  Settings,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -44,6 +45,13 @@ import {
 } from '@/components/ui/dialog';
 import { Input } from '../ui/input';
 import { Label } from '../ui/label';
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from '@/components/ui/dropdown-menu';
+
 
 const adminMenuItems = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
@@ -179,47 +187,52 @@ export function AppSidebar() {
         </div>
         <SidebarSeparator />
          <SidebarMenu>
-          <Dialog open={supportDialogOpen} onOpenChange={setSupportDialogOpen}>
-            <DialogTrigger asChild>
+          <DropdownMenu>
+            <DropdownMenuTrigger asChild>
               <SidebarMenuItem>
                   <SidebarMenuButton
-                    tooltip={{ children: 'Support & Help', side: 'right' }}
+                    tooltip={{ children: 'Settings', side: 'right' }}
                   >
-                    <LifeBuoy />
-                    <span>Support & Help</span>
+                    <Settings />
+                    <span>Settings</span>
                   </SidebarMenuButton>
               </SidebarMenuItem>
-            </DialogTrigger>
-            <DialogContent>
-                <DialogHeader>
-                    <DialogTitle>Support & Help</DialogTitle>
-                    <DialogDescription>
-                        Get help with Inven-tra.
-                    </DialogDescription>
-                </DialogHeader>
-                <div className="py-4">
-                    <p>For any issues or questions, please contact our support team at:</p>
-                    <a href="mailto:support@inven-tra.com" className="text-primary hover:underline">support@inven-tra.com</a>
-                    <p className="mt-4">You can also check our <Link href="#" className="text-primary hover:underline">FAQ section</Link> for common questions.</p>
-                </div>
-                <DialogFooter>
-                    <Button onClick={() => setSupportDialogOpen(false)}>Close</Button>
-                </DialogFooter>
-            </DialogContent>
-          </Dialog>
+            </DropdownMenuTrigger>
+            <DropdownMenuContent className="mb-2 ml-2" side="right" align="start">
+              <Dialog open={supportDialogOpen} onOpenChange={setSupportDialogOpen}>
+                <DialogTrigger asChild>
+                  <DropdownMenuItem>
+                    <LifeBuoy className="mr-2 h-4 w-4" />
+                    <span>Support & Help</span>
+                  </DropdownMenuItem>
+                </DialogTrigger>
+                <DialogContent>
+                  <DialogHeader>
+                      <DialogTitle>Support & Help</DialogTitle>
+                      <DialogDescription>
+                          Get help with Inven-tra.
+                      </DialogDescription>
+                  </DialogHeader>
+                  <div className="py-4">
+                      <p>For any issues or questions, please contact our support team at:</p>
+                      <a href="mailto:support@inven-tra.com" className="text-primary hover:underline">support@inven-tra.com</a>
+                      <p className="mt-4">You can also check our <Link href="#" className="text-primary hover:underline">FAQ section</Link> for common questions.</p>
+                  </div>
+                  <DialogFooter>
+                      <Button onClick={() => setSupportDialogOpen(false)}>Close</Button>
+                  </DialogFooter>
+                </DialogContent>
+              </Dialog>
+              <DropdownMenuItem asChild>
+                 <Link href="/" className="flex items-center">
+                    <UserPlus className="mr-2 h-4 w-4" />
+                    <span>Add New Account</span>
+                  </Link>
+              </DropdownMenuItem>
+            </DropdownMenuContent>
+          </DropdownMenu>
 
-           <SidebarMenuItem>
-            <SidebarMenuButton
-              asChild
-              tooltip={{ children: 'Add New Account', side: 'right' }}
-            >
-              <Link href="/">
-                <UserPlus />
-                <span>Add New Account</span>
-              </Link>
-            </SidebarMenuButton>
-          </SidebarMenuItem>
-           <SidebarMenuItem>
+          <SidebarMenuItem>
             <SidebarMenuButton
               asChild
               tooltip={{ children: 'Logout', side: 'right' }}
