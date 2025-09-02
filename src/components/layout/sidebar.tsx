@@ -5,7 +5,6 @@ import {
   BarChart3,
   Boxes,
   LayoutDashboard,
-  Settings,
   Truck,
   Users,
   Package,
@@ -15,6 +14,8 @@ import {
   Crown,
   LogOut,
   Receipt,
+  LifeBuoy,
+  UserPlus,
 } from 'lucide-react';
 import {
   Sidebar,
@@ -64,6 +65,7 @@ export function AppSidebar() {
   const { toast } = useToast();
   const [adminDialogOpen, setAdminDialogOpen] = useState(false);
   const [password, setPassword] = useState('');
+  const [supportDialogOpen, setSupportDialogOpen] = useState(false);
 
   const menuItems = user.role === 'Admin' ? adminMenuItems : consumerMenuItems;
 
@@ -177,14 +179,43 @@ export function AppSidebar() {
         </div>
         <SidebarSeparator />
          <SidebarMenu>
-          <SidebarMenuItem>
+          <Dialog open={supportDialogOpen} onOpenChange={setSupportDialogOpen}>
+            <DialogTrigger asChild>
+              <SidebarMenuItem>
+                  <SidebarMenuButton
+                    tooltip={{ children: 'Support & Help', side: 'right' }}
+                  >
+                    <LifeBuoy />
+                    <span>Support & Help</span>
+                  </SidebarMenuButton>
+              </SidebarMenuItem>
+            </DialogTrigger>
+            <DialogContent>
+                <DialogHeader>
+                    <DialogTitle>Support & Help</DialogTitle>
+                    <DialogDescription>
+                        Get help with Inven-tra.
+                    </DialogDescription>
+                </DialogHeader>
+                <div className="py-4">
+                    <p>For any issues or questions, please contact our support team at:</p>
+                    <a href="mailto:support@inven-tra.com" className="text-primary hover:underline">support@inven-tra.com</a>
+                    <p className="mt-4">You can also check our <Link href="#" className="text-primary hover:underline">FAQ section</Link> for common questions.</p>
+                </div>
+                <DialogFooter>
+                    <Button onClick={() => setSupportDialogOpen(false)}>Close</Button>
+                </DialogFooter>
+            </DialogContent>
+          </Dialog>
+
+           <SidebarMenuItem>
             <SidebarMenuButton
               asChild
-              tooltip={{ children: 'Settings', side: 'right' }}
+              tooltip={{ children: 'Add New Account', side: 'right' }}
             >
-              <Link href="#">
-                <Settings />
-                <span>Settings</span>
+              <Link href="/">
+                <UserPlus />
+                <span>Add New Account</span>
               </Link>
             </SidebarMenuButton>
           </SidebarMenuItem>
