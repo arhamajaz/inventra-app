@@ -45,7 +45,7 @@ import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 
 const adminMenuItems = [
-  { href: '/', icon: LayoutDashboard, label: 'Dashboard' },
+  { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { href: '/inventory', icon: Boxes, label: 'Inventory' },
   { href: '/orders', icon: Truck, label: 'Orders' },
   { href: '/analytics', icon: BarChart3, label: 'Analytics' },
@@ -193,7 +193,7 @@ export function AppSidebar() {
               asChild
               tooltip={{ children: 'Logout', side: 'right' }}
             >
-              <Link href="#">
+              <Link href="/">
                 <LogOut />
                 <span>Logout</span>
               </Link>
