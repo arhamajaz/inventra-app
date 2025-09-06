@@ -32,7 +32,7 @@ export function ProductCard({ product, onAddToCart }: ProductCardProps) {
   const similarProducts = products.filter(p => p.category === product.category && p.id !== product.id).slice(0, 3);
 
   return (
-    <Card className="flex flex-col">
+    <Card className="flex flex-col transition-all duration-300 ease-in-out hover:shadow-xl hover:-translate-y-1">
       <CardHeader>
         <div className="relative w-full h-40">
            <Image
