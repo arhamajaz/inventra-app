@@ -6,12 +6,16 @@ import { SidebarTrigger } from '@/components/ui/sidebar';
 import { Button } from '@/components/ui/button';
 import { Search, PlusCircle } from 'lucide-react';
 import { Input } from '@/components/ui/input';
+import { Dialog, DialogTrigger } from '../ui/dialog';
+import { AddProductDialog } from '../dashboard/add-product-dialog';
 
 export function AppHeader() {
   const router = useRouter();
   const pathname = usePathname();
   const searchParams = useSearchParams();
   const [searchValue, setSearchValue] = React.useState(searchParams.get('search') || '');
+  const [isAddProductOpen, setIsAddProductOpen] = React.useState(false);
+
 
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
@@ -46,12 +50,17 @@ export function AppHeader() {
           onChange={handleSearchChange}
         />
       </div>
-      <Button size="sm" className="h-8 gap-1">
-        <PlusCircle className="h-3.5 w-3.5" />
-        <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
-          Add Product
-        </span>
-      </Button>
+      <Dialog open={isAddProductOpen} onOpenChange={setIsAddProductOpen}>
+        <DialogTrigger asChild>
+          <Button size="sm" className="h-8 gap-1">
+            <PlusCircle className="h-3.5 w-3.5" />
+            <span className="sr-only sm:not-sr-only sm:whitespace-nowrap">
+              Add Product
+            </span>
+          </Button>
+        </DialogTrigger>
+        <AddProductDialog onOpenChange={setIsAddProductOpen} />
+      </Dialog>
     </header>
   );
 }
