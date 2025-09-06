@@ -1,4 +1,5 @@
 
+import * as React from 'react';
 import { AppHeader } from '@/components/layout/header';
 import { AppSidebar } from '@/components/layout/sidebar';
 import { ProductList } from '@/components/dashboard/product-list';
@@ -12,7 +13,9 @@ export default function InventoryPage() {
         <main className="grid flex-1 items-start gap-4 p-4 sm:px-6 sm:py-0 md:gap-8">
           <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
              <h1 className="text-2xl font-semibold">Inventory</h1>
-             <ProductList />
+             <React.Suspense fallback={<p>Loading products...</p>}>
+                <ProductList />
+             </React.Suspense>
           </div>
         </main>
       </div>
