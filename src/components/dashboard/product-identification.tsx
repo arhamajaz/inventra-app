@@ -9,15 +9,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { Camera, PackagePlus } from 'lucide-react';
+import { Camera } from 'lucide-react';
 import type { IdentifyProductOutput } from '@/ai/flows/product-identification';
 import { ProductIdentificationIdle } from './product-identification-idle';
 import { ProductIdentificationScan } from './product-identification-scan';
 import { ProductIdentificationResult } from './product-identification-result';
 import { getProductIdentification } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
-import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
-import { AddProductDialog } from './add-product-dialog';
 
 type IdentificationState = 'idle' | 'scanning' | 'uploading' | 'processing' | 'identified';
 
@@ -65,6 +63,7 @@ export function ProductIdentification() {
     setSelectedFile(null);
     setPreviewUrl(null);
     setIdentificationResult(null);
+    setIsAddProductOpen(false);
   };
 
   const renderContent = () => {
@@ -80,17 +79,13 @@ export function ProductIdentification() {
         );
       case 'identified':
         return (
-          <Dialog open={isAddProductOpen} onOpenChange={setIsAddProductOpen}>
             <ProductIdentificationResult 
                 result={identificationResult!} 
                 previewUrl={previewUrl!}
                 onRetry={handleReset}
-                onConfirm={() => setIsAddProductOpen(true)}
+                onAddDialogChange={setIsAddProductOpen}
+                isAddDialogOpen={isAddProductOpen}
             />
-             <DialogContent>
-                <AddProductDialog onOpenChange={setIsAddProductOpen} productName={identificationResult?.productName} />
-            </DialogContent>
-          </Dialog>
         );
       case 'idle':
       default:
