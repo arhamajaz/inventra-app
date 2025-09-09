@@ -2,6 +2,14 @@
 import type {NextConfig} from 'next';
 
 const nextConfig: NextConfig = {
+  async rewrites() {
+    return [
+      {
+        source: '/api/image-proxy',
+        destination: 'https://i.ibb.co/L9t0bJ8/parle-g-original-biscuits-250g.png',
+      },
+    ]
+  },
   /* config options here */
   typescript: {
     ignoreBuildErrors: true,

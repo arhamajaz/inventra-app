@@ -12,11 +12,12 @@ interface ProductIdentificationScanProps {
 
 export function ProductIdentificationScan({ onImageCaptured }: ProductIdentificationScanProps) {
     const placeholderImage = 'https://i.ibb.co/L9t0bJ8/parle-g-original-biscuits-250g.png';
+    const proxyImageUrl = '/api/image-proxy';
 
   const handleCapture = async () => {
     // This is a simulation. In a real app, you would use navigator.mediaDevices.
     // For this example, we'll fetch a placeholder image and convert it to a File object.
-    const response = await fetch(placeholderImage);
+    const response = await fetch(proxyImageUrl);
     const blob = await response.blob();
     const file = new File([blob], "scanned-product.png", { type: "image/png" });
 
