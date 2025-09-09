@@ -24,11 +24,18 @@ import {
 
 interface AddProductDialogProps {
   onOpenChange: (open: boolean) => void;
+  productName?: string;
 }
 
-export function AddProductDialog({ onOpenChange }: AddProductDialogProps) {
+export function AddProductDialog({ onOpenChange, productName: initialProductName }: AddProductDialogProps) {
   const { toast } = useToast();
-  const [productName, setProductName] = React.useState('');
+  const [productName, setProductName] = React.useState(initialProductName || '');
+
+  React.useEffect(() => {
+    if(initialProductName) {
+        setProductName(initialProductName);
+    }
+  }, [initialProductName]);
 
   const handleSaveChanges = () => {
     // In a real application, you would handle the form submission here,
