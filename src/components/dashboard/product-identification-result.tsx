@@ -5,10 +5,12 @@ import * as React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import type { IdentifyProductOutput } from '@/ai/flows/product-identification';
-import { Check, RefreshCw } from 'lucide-react';
+import { Check, PackagePlus, RefreshCw, View } from 'lucide-react';
 import { products } from '@/lib/mock-data';
 import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
 import { AddProductDialog } from './add-product-dialog';
+import { Badge } from '../ui/badge';
+import { useRouter } from 'next/navigation';
 
 interface ProductIdentificationResultProps {
   result: IdentifyProductOutput;
@@ -25,7 +27,15 @@ export function ProductIdentificationResult({
   onAddDialogChange,
   isAddDialogOpen
 }: ProductIdentificationResultProps) {
+  const router = useRouter();
   const identifiedProduct = products.find(p => p.id === result.productId);
+  const isInInventory = !!identifiedProduct;
+
+  const handleViewInventory = () => {
+    if (identifiedProduct) {
+        router.push(`/inventory?search=${identifiedProduct.name}`);
+    }
+  }
 
   return (
     <Dialog open={isAddDialogOpen} onOpenChange={onAddDialogChange}>
@@ -34,11 +44,16 @@ export function ProductIdentificationResult({
               <Image src={previewUrl} alt="Product preview" layout="fill" objectFit="contain" className="rounded-md" />
           </div>
         <div className="rounded-md border bg-muted/50 p-4 space-y-2">
-          <h4 className="font-semibold">Identification Results:</h4>
+          <div className="flex justify-between items-center">
+            <h4 className="font-semibold">Identification Results:</h4>
+            <Badge variant={isInInventory ? 'default' : 'secondary'} className={isInInventory ? 'bg-green-500/20 text-green-700 border-green-500/30' : ''}>
+                {isInInventory ? 'Product in Inventory' : 'Product Not in Inventory'}
+            </Badge>
+          </div>
           <p className="text-sm">
             <span className="font-medium">Product:</span>{' '}
             <span className="text-primary font-bold">
-              {identifiedProduct?.name || result.productName}
+              {result.productName}
             </span>
           </p>
           <p className="text-sm">
@@ -54,17 +69,23 @@ export function ProductIdentificationResult({
               <RefreshCw className="mr-2 h-4 w-4" />
             Try Again
           </Button>
-          <DialogTrigger asChild>
-            <Button className="w-full">
-                <Check className="mr-2 h-4 w-4" />
-                Confirm & Add
+          {isInInventory ? (
+             <Button className="w-full" onClick={handleViewInventory}>
+                <View className="mr-2 h-4 w-4" />
+                View in Inventory
             </Button>
-          </DialogTrigger>
+          ) : (
+            <DialogTrigger asChild>
+              <Button className="w-full">
+                  <PackagePlus className="mr-2 h-4 w-4" />
+                  Add to Inventory
+              </Button>
+            </DialogTrigger>
+          )}
         </div>
       </div>
-      <DialogContent>
-        <AddProductDialog onOpenChange={onAddDialogChange} productName={result.productName} />
-      </DialogContent>
+      <AddProductDialog onOpenChange={onAddDialogChange} productName={result.productName} />
     </Dialog>
   );
 }
+
