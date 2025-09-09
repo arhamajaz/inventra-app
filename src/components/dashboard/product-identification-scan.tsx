@@ -39,7 +39,7 @@ export function ProductIdentificationScan({ onImageCaptured }: ProductIdentifica
         data-ai-hint="simulated camera"
       />
       <div className="absolute inset-0 border-4 border-dashed border-white/50 rounded-lg m-4"></div>
-      <div className="z-10 absolute bottom-4">
+      <div className="z-10 absolute flex items-center justify-center">
         <Button onClick={handleCapture} size="lg" className="rounded-full h-16 w-16 p-0 border-4 border-white bg-primary/50 hover:bg-primary/70">
           <Camera className="h-8 w-8 text-white" />
         </Button>
