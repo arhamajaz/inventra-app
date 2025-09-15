@@ -26,7 +26,7 @@ export function ProductIdentificationIdle({ onScan, onUpload }: ProductIdentific
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-48 space-y-4">
+    <div className="flex flex-col items-center justify-center h-64 space-y-4">
       <div className="grid grid-cols-2 gap-4 w-full">
         <Button variant="outline" className="flex-col h-24" onClick={onScan}>
           <Camera className="h-8 w-8 mb-2" />

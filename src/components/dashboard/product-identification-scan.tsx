@@ -72,12 +72,9 @@ export function ProductIdentificationScan({ onImageCaptured }: ProductIdentifica
   };
 
   return (
-    <div className="relative flex flex-col items-center justify-center h-48 bg-black rounded-lg overflow-hidden">
-      <video ref={videoRef} className="absolute top-0 left-0 w-full h-full object-cover" autoPlay muted playsInline />
-      <div className="absolute inset-0 bg-black/30" />
-
-      {/* Pulsing viewfinder */}
-      <div className="absolute inset-4 border-2 border-primary/50 rounded-lg animate-pulse" />
+    <div className="relative flex flex-col items-center justify-center h-64 bg-black rounded-lg overflow-hidden">
+       {hasCameraPermission && <video ref={videoRef} className="absolute top-0 left-0 w-full h-full object-cover" autoPlay muted playsInline />}
+       <div className="absolute inset-0 bg-black/30" />
       
       {!hasCameraPermission && (
           <div className="absolute top-4 left-4 right-4 z-20">
