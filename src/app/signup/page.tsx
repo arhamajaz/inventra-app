@@ -8,16 +8,24 @@ import { Button } from '@/components/ui/button';
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card';
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
-import { Boxes, KeyRound } from 'lucide-react';
+import { KeyRound } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { customers } from '@/lib/mock-data';
+import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
+import { useUser } from '@/components/user/user-provider';
+import type { UserRole } from '@/lib/types';
+
+const ADMIN_AUTH_KEY = '1875';
 
 export default function SignupPage() {
   const router = useRouter();
   const { toast } = useToast();
+  const { setUser } = useUser();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
+  const [role, setRole] = useState<UserRole>('Consumer');
+  const [adminKey, setAdminKey] = useState('');
 
   const handleSignup = () => {
     if (!email || !password || !confirmPassword) {
@@ -46,6 +54,15 @@ export default function SignupPage() {
         });
         return;
     }
+    
+    if (role === 'Admin' && adminKey !== ADMIN_AUTH_KEY) {
+        toast({
+          variant: 'destructive',
+          title: 'Invalid Admin Key',
+          description: 'The authentication key for the admin role is incorrect.',
+        });
+        return;
+    }
 
     // In a real application, you would create the user account here.
     // For this demo, we'll just show a success message and redirect.
@@ -53,7 +70,8 @@ export default function SignupPage() {
       title: 'Signup Successful!',
       description: 'You have successfully created your account.',
     });
-
+    
+    setUser({role: role});
     router.push('/dashboard');
   };
 
@@ -68,6 +86,32 @@ export default function SignupPage() {
           <CardDescription>Join Inven-tra and manage your inventory smartly.</CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
+            <div className="space-y-2">
+                <Label>Role</Label>
+                 <RadioGroup defaultValue="Consumer" onValueChange={(value: UserRole) => setRole(value)} className="flex gap-4">
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="Consumer" id="r1" />
+                        <Label htmlFor="r1">Consumer</Label>
+                    </div>
+                    <div className="flex items-center space-x-2">
+                        <RadioGroupItem value="Admin" id="r2" />
+                        <Label htmlFor="r2">Admin</Label>
+                    </div>
+                </RadioGroup>
+            </div>
+             {role === 'Admin' && (
+                <div className="space-y-2">
+                    <Label htmlFor="admin-key">Admin Auth Key</Label>
+                    <Input
+                        id="admin-key"
+                        type="password"
+                        placeholder="Enter admin key"
+                        required
+                        value={adminKey}
+                        onChange={(e) => setAdminKey(e.target.value)}
+                    />
+                </div>
+            )}
           <div className="space-y-2">
             <Label htmlFor="email">Email</Label>
             <Input 

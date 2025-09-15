@@ -33,7 +33,7 @@ export function useUser() {
 }
 
 export function UserProvider({ children }: { children: React.ReactNode }) {
-  const [user, setCurrentUser] = React.useState<User>(ADMIN_USER);
+  const [user, setCurrentUser] = React.useState<User>(CONSUMER_USER);
 
   const setUser = (settings: { role: UserRole, customerId?: string }) => {
     if (settings.role === 'Admin') {
