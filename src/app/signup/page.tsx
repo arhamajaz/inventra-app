@@ -71,7 +71,7 @@ export default function SignupPage() {
       description: 'You have successfully created your account.',
     });
     
-    setUser({role: role});
+    setUser({role: role, email: email});
     router.push('/dashboard');
   };
 

@@ -19,7 +19,7 @@ const CONSUMER_USER: User = {
 
 interface UserContextType {
   user: User;
-  setUser: (settings: { role: UserRole, customerId?: string }) => void;
+  setUser: (settings: { role: UserRole, customerId?: string, email?: string }) => void;
 }
 
 const UserContext = React.createContext<UserContextType | undefined>(undefined);
@@ -35,12 +35,14 @@ export function useUser() {
 export function UserProvider({ children }: { children: React.ReactNode }) {
   const [user, setCurrentUser] = React.useState<User>(CONSUMER_USER);
 
-  const setUser = (settings: { role: UserRole, customerId?: string }) => {
+  const setUser = (settings: { role: UserRole, customerId?: string, email?: string }) => {
     if (settings.role === 'Admin') {
-        setCurrentUser(ADMIN_USER);
+        const adminEmail = settings.email || ADMIN_USER.email;
+        setCurrentUser({...ADMIN_USER, email: adminEmail, name: adminEmail.split('@')[0]});
     } else {
+        const consumerEmail = settings.email || CONSUMER_USER.email;
         const newId = settings.customerId || user.customerId || `FS-${Math.floor(100000 + Math.random() * 900000)}`;
-        setCurrentUser({ ...CONSUMER_USER, customerId: newId });
+        setCurrentUser({ ...CONSUMER_USER, customerId: newId, email: consumerEmail, name: consumerEmail.split('@')[0] });
     }
   };
 
