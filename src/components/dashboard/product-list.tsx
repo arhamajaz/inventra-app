@@ -21,12 +21,12 @@ import {
 import { Badge } from '@/components/ui/badge';
 import { products } from '@/lib/mock-data';
 import { IndianRupee } from 'lucide-react';
-import { useSearchParams } from 'next/navigation';
 
-export function ProductList() {
-  const searchParams = useSearchParams();
-  const searchQuery = searchParams.get('search') || '';
+interface ProductListProps {
+    searchQuery: string;
+}
 
+export function ProductList({ searchQuery }: ProductListProps) {
   const filteredProducts = products.filter(product => 
     product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     product.category.toLowerCase().includes(searchQuery.toLowerCase())

@@ -20,12 +20,14 @@ export function AppHeader() {
   const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const query = e.target.value;
     setSearchValue(query);
-    const params = new URLSearchParams(searchParams);
+
+    const params = new URLSearchParams();
     if (query) {
       params.set('search', query);
     } else {
       params.delete('search');
     }
+    
     // Only push to router if we are on a page that should be searchable, like inventory
     if (pathname.startsWith('/inventory')) {
         router.push(`${pathname}?${params.toString()}`);
