@@ -6,6 +6,7 @@ import { Toaster } from "@/components/ui/toaster";
 import { SidebarProvider } from "@/components/ui/sidebar";
 import { CartProvider } from "@/components/store/shopping-cart-provider";
 import { UserProvider } from "@/components/user/user-provider";
+import { CustomerProvider } from "@/components/user/customer-provider";
 
 export const metadata: Metadata = {
   title: "Inven-tra",
@@ -26,11 +27,13 @@ export default function RootLayout({
       </head>
       <body className={cn("font-body antialiased h-full")}>
         <UserProvider>
-          <SidebarProvider>
-            <CartProvider>
-              {children}
-            </CartProvider>
-          </SidebarProvider>
+          <CustomerProvider>
+            <SidebarProvider>
+              <CartProvider>
+                {children}
+              </CartProvider>
+            </SidebarProvider>
+          </CustomerProvider>
         </UserProvider>
         <Toaster />
       </body>

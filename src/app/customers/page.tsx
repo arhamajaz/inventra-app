@@ -1,4 +1,6 @@
 
+'use client';
+
 import { AppHeader } from '@/components/layout/header';
 import { AppSidebar } from '@/components/layout/sidebar';
 import {
@@ -16,10 +18,15 @@ import {
   TableHeader,
   TableRow,
 } from '@/components/ui/table';
-import { customers } from '@/lib/mock-data';
 import { Users } from 'lucide-react';
+import { useCustomers } from '@/components/user/customer-provider';
+import { useUser } from '@/components/user/user-provider';
+import { Badge } from '@/components/ui/badge';
 
 export default function CustomersPage() {
+  const { customers } = useCustomers();
+  const { user: loggedInUser } = useUser();
+
   return (
     <div className="flex min-h-screen w-full bg-muted/40">
       <AppSidebar />
@@ -43,6 +50,7 @@ export default function CustomersPage() {
                     <TableHead>Customer ID</TableHead>
                     <TableHead>Name</TableHead>
                     <TableHead>Email</TableHead>
+                    <TableHead>Status</TableHead>
                   </TableRow>
                 </TableHeader>
                 <TableBody>
@@ -51,6 +59,11 @@ export default function CustomersPage() {
                       <TableCell className="font-medium">{customer.id}</TableCell>
                       <TableCell>{customer.name}</TableCell>
                       <TableCell>{customer.email}</TableCell>
+                      <TableCell>
+                        {customer.email === loggedInUser.email && loggedInUser.role === 'Consumer' ? (
+                          <Badge variant="secondary">Permanent Customer</Badge>
+                        ) : null}
+                      </TableCell>
                     </TableRow>
                   ))}
                 </TableBody>

@@ -10,10 +10,10 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { KeyRound } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
-import { customers } from '@/lib/mock-data';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
 import { useUser } from '@/components/user/user-provider';
 import type { UserRole } from '@/lib/types';
+import { useCustomers } from '@/components/user/customer-provider';
 
 const ADMIN_AUTH_KEY = '1875';
 
@@ -21,6 +21,7 @@ export default function SignupPage() {
   const router = useRouter();
   const { toast } = useToast();
   const { setUser } = useUser();
+  const { customers, addCustomer } = useCustomers();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -65,13 +66,22 @@ export default function SignupPage() {
     }
 
     // In a real application, you would create the user account here.
-    // For this demo, we'll just show a success message and redirect.
+    const customerId = `FS-${Math.floor(100000 + Math.random() * 900000)}`;
+    
+    if (role === 'Consumer') {
+        addCustomer({
+            id: customerId,
+            name: email.split('@')[0],
+            email: email,
+        });
+    }
+    
     toast({
       title: 'Signup Successful!',
       description: 'You have successfully created your account.',
     });
     
-    setUser({role: role, email: email});
+    setUser({role: role, email: email, customerId: role === 'Consumer' ? customerId : undefined});
     router.push('/dashboard');
   };
 
