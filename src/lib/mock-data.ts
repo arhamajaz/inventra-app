@@ -1,5 +1,13 @@
 
-import type { Product, Order } from './types';
+import type { Product, Order, Customer } from './types';
+
+export const customers: Customer[] = [
+    { id: 'FS-458921', name: 'Rohan Sharma', email: 'rohan.sharma@example.com' },
+    { id: 'FS-102384', name: 'Priya Verma', email: 'priya.verma@example.com' },
+    { id: 'FS-983471', name: 'Anjali Mehta', email: 'anjali.mehta@example.com' },
+    { id: 'FS-234567', name: 'Vikram Singh', email: 'vikram.singh@example.com' },
+    { id: 'FS-876543', name: 'Sunita Reddy', email: 'sunita.reddy@example.com' },
+];
 
 export const products: Product[] = [
   {
@@ -373,4 +381,3 @@ export const salesData = [
   { name: 'May', sales: 550000 },
   { name: 'Jun', sales: 580000 },
 ];
-

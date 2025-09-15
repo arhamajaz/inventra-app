@@ -6,6 +6,7 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/com
 import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { Boxes } from 'lucide-react';
+import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 
 export default function LoginPage() {
@@ -39,8 +40,8 @@ export default function LoginPage() {
           <Button onClick={handleLogin} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
             Log In
           </Button>
-          <Button variant="outline" className="w-full">
-            Sign Up
+          <Button variant="outline" className="w-full" asChild>
+            <Link href="/signup">Sign Up</Link>
           </Button>
         </CardContent>
       </Card>

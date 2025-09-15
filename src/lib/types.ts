@@ -17,6 +17,12 @@ export interface Product {
   description?: string;
 }
 
+export interface Customer {
+    id: string;
+    name: string;
+    email: string;
+}
+
 export interface Order {
   id: string;
   customerName: string;

@@ -59,6 +59,7 @@ const adminMenuItems = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'Dashboard' },
   { href: '/inventory', icon: Boxes, label: 'Inventory' },
   { href: '/orders', icon: Truck, label: 'Orders' },
+  { href: '/customers', icon: Users, label: 'Customers' },
   { href: '/analytics', icon: BarChart3, label: 'Analytics' },
   { href: '/ai-tools', icon: Wand2, label: 'AI Tools' },
 ];
