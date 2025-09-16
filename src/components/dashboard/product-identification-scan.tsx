@@ -15,7 +15,6 @@ export function ProductIdentificationScan({ onImageCaptured }: ProductIdentifica
   const videoRef = React.useRef<HTMLVideoElement>(null);
   const [hasCameraPermission, setHasCameraPermission] = React.useState(true);
   const { toast } = useToast();
-  const proxyImageUrl = '/api/image-proxy';
 
   React.useEffect(() => {
     const getCameraPermission = async () => {
@@ -58,17 +57,47 @@ export function ProductIdentificationScan({ onImageCaptured }: ProductIdentifica
 
 
   const handleCapture = async () => {
-    // This is a simulation. In a real app, you would capture a frame from the video stream.
-    // For this example, we'll fetch a placeholder image and convert it to a File object.
-    const response = await fetch(proxyImageUrl);
-    const blob = await response.blob();
-    const file = new File([blob], 'scanned-product.png', { type: 'image/png' });
+    if (!videoRef.current) {
+        toast({
+            variant: 'destructive',
+            title: 'Capture Failed',
+            description: 'Video stream is not available.',
+        });
+        return;
+    }
 
-    const reader = new FileReader();
-    reader.onloadend = () => {
-      onImageCaptured(file, reader.result as string);
-    };
-    reader.readAsDataURL(file);
+    const canvas = document.createElement('canvas');
+    canvas.width = videoRef.current.videoWidth;
+    canvas.height = videoRef.current.videoHeight;
+    const context = canvas.getContext('2d');
+    
+    if (!context) {
+        toast({
+            variant: 'destructive',
+            title: 'Capture Failed',
+            description: 'Could not get canvas context.',
+        });
+        return;
+    }
+
+    context.drawImage(videoRef.current, 0, 0, canvas.width, canvas.height);
+
+    canvas.toBlob((blob) => {
+        if (blob) {
+            const file = new File([blob], 'scanned-product.png', { type: 'image/png' });
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                onImageCaptured(file, reader.result as string);
+            };
+            reader.readAsDataURL(file);
+        } else {
+            toast({
+                variant: 'destructive',
+                title: 'Capture Failed',
+                description: 'Could not create blob from canvas.',
+            });
+        }
+    }, 'image/png');
   };
 
   return (
