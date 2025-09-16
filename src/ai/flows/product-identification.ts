@@ -38,14 +38,16 @@ const prompt = ai.definePrompt({
   name: 'identifyProductPrompt',
   input: {schema: IdentifyProductInputSchema},
   output: {schema: IdentifyProductOutputSchema},
-  prompt: `You are an expert product identifier for an inventory management system. You will be provided with an image of a product. Your task is to identify the product from the following list and provide its name and ID.
+  prompt: `You are an expert product identifier for an inventory management system. You will be provided with an image of a product.
+Your task is to first use your general knowledge to identify the product in the image.
+Then, you must determine if this identified product matches any of the products in the following list.
 
 Available products (JSON format):
 ${JSON.stringify(productList)}
 
-Use the image as the primary source of information to identify the product. Provide the product name, its ID from the list, a confidence score, and your reasoning.
+Use the image as the primary source of information. Provide the product name of the best match from the list, its corresponding ID, a confidence score for the match, and your reasoning.
 
-If the product in the image does not seem to match any product in the list, select the closest possible match and use a lower confidence score.
+If the product in the image does not seem to match any product in the list, identify the product from your general knowledge, but choose the closest possible match from the list and use a lower confidence score to indicate the mismatch.
 
 Image: {{media url=photoDataUri}}`,
 });
