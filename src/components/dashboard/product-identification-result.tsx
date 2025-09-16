@@ -5,12 +5,16 @@ import * as React from 'react';
 import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import type { IdentifyProductOutput } from '@/ai/flows/product-identification';
-import { Check, PackagePlus, RefreshCw, View } from 'lucide-react';
+import { Check, PackagePlus, RefreshCw, Minus, Plus, ShoppingCart, View } from 'lucide-react';
 import { products } from '@/lib/mock-data';
-import { Dialog, DialogTrigger, DialogContent } from '@/components/ui/dialog';
+import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import { AddProductDialog } from './add-product-dialog';
 import { Badge } from '../ui/badge';
 import { useRouter } from 'next/navigation';
+import { useCart } from '../store/shopping-cart-provider';
+import { useToast } from '@/hooks/use-toast';
+import { Input } from '../ui/input';
+import { Label } from '../ui/label';
 
 interface ProductIdentificationResultProps {
   result: IdentifyProductOutput;
@@ -28,6 +32,10 @@ export function ProductIdentificationResult({
   isAddDialogOpen
 }: ProductIdentificationResultProps) {
   const router = useRouter();
+  const { addToCartWithQuantity } = useCart();
+  const { toast } = useToast();
+  const [quantity, setQuantity] = React.useState(1);
+
   const identifiedProduct = products.find(p => p.id === result.productId);
   const isInInventory = !!identifiedProduct;
 
@@ -36,6 +44,17 @@ export function ProductIdentificationResult({
         router.push(`/inventory?search=${identifiedProduct.name}`);
     }
   }
+
+  const handleAddToCart = () => {
+    if (identifiedProduct && quantity > 0) {
+      addToCartWithQuantity(identifiedProduct, quantity);
+      toast({
+        title: 'Added to Cart',
+        description: `${quantity} x ${identifiedProduct.name} has been added to your cart.`,
+      });
+      onRetry();
+    }
+  };
 
   return (
     <Dialog open={isAddDialogOpen} onOpenChange={onAddDialogChange}>
@@ -66,19 +85,42 @@ export function ProductIdentificationResult({
           </p>
           <p className="text-sm"><span className="font-medium">Reasoning:</span> {result.reasoning}</p>
         </div>
-        <div className="flex justify-between gap-2">
-          <Button variant="outline" onClick={onRetry} className="w-full">
+        
+        {isInInventory && (
+            <div className="space-y-2">
+                <Label htmlFor="quantity">Quantity</Label>
+                <div className="flex items-center gap-2">
+                    <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => setQuantity(q => Math.max(1, q - 1))}>
+                        <Minus className="h-4 w-4" />
+                    </Button>
+                    <Input 
+                        id="quantity" 
+                        type="number" 
+                        min="1" 
+                        value={quantity}
+                        onChange={e => setQuantity(Math.max(1, parseInt(e.target.value) || 1))}
+                        className="w-16 text-center"
+                    />
+                    <Button variant="outline" size="icon" className="h-8 w-8" onClick={() => setQuantity(q => q + 1)}>
+                        <Plus className="h-4 w-4" />
+                    </Button>
+                </div>
+            </div>
+        )}
+
+        <div className="grid grid-cols-2 gap-2">
+          <Button variant="outline" onClick={onRetry}>
               <RefreshCw className="mr-2 h-4 w-4" />
             Try Again
           </Button>
           {isInInventory ? (
-             <Button className="w-full" onClick={handleViewInventory}>
-                <View className="mr-2 h-4 w-4" />
-                View in Inventory
+             <Button onClick={handleAddToCart}>
+                <ShoppingCart className="mr-2 h-4 w-4" />
+                Add to Cart
             </Button>
           ) : (
             <DialogTrigger asChild>
-              <Button className="w-full">
+              <Button>
                   <PackagePlus className="mr-2 h-4 w-4" />
                   Add to Inventory
               </Button>
