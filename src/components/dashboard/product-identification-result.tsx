@@ -40,9 +40,11 @@ export function ProductIdentificationResult({
   return (
     <Dialog open={isAddDialogOpen} onOpenChange={onAddDialogChange}>
       <div className="space-y-4">
-          <div className="relative w-full h-40">
-              <Image src={previewUrl} alt="Product preview" layout="fill" objectFit="contain" className="rounded-md" />
-          </div>
+          {previewUrl && (
+            <div className="relative w-full h-40">
+                <Image src={previewUrl} alt="Product preview" layout="fill" objectFit="contain" className="rounded-md" />
+            </div>
+          )}
         <div className="rounded-md border bg-muted/50 p-4 space-y-2">
           <div className="flex justify-between items-center">
             <h4 className="font-semibold">Identification Results:</h4>
@@ -88,4 +90,3 @@ export function ProductIdentificationResult({
     </Dialog>
   );
 }
-

@@ -72,16 +72,20 @@ export function ProductIdentification() {
         return <ProductIdentificationScan onImageCaptured={handleImageAvailable} />;
       case 'processing':
         return (
-            <div className="flex flex-col items-center justify-center h-48 space-y-2">
+            <div className="flex flex-col items-center justify-center h-64 space-y-2">
                 <div className="animate-spin rounded-full h-12 w-12 border-t-2 border-b-2 border-primary"></div>
                 <p className="text-muted-foreground">Analyzing image...</p>
             </div>
         );
       case 'identified':
+        if (!identificationResult || !previewUrl) {
+            handleReset();
+            return null;
+        }
         return (
             <ProductIdentificationResult 
-                result={identificationResult!} 
-                previewUrl={previewUrl!}
+                result={identificationResult} 
+                previewUrl={previewUrl}
                 onRetry={handleReset}
                 onAddDialogChange={setIsAddProductOpen}
                 isAddDialogOpen={isAddProductOpen}
