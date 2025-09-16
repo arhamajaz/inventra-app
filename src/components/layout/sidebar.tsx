@@ -67,6 +67,7 @@ const adminMenuItems = [
 const consumerMenuItems = [
     { href: '/store', icon: ShoppingCart, label: 'Consumer Store' },
     { href: '/my-bill', icon: Receipt, label: 'My Bill'},
+    { href: '/ai-tools', icon: Wand2, label: 'AI Tools' },
 ];
 
 
