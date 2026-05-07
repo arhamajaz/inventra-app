@@ -39,4 +39,5 @@ export interface User {
     name: string;
     email: string;
     customerId?: string;
+    membershipId?: string;
 }

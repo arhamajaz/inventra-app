@@ -23,7 +23,7 @@ export function ProductIdentification() {
   const [currentState, setCurrentState] = React.useState<IdentificationState>('idle');
   const [selectedFile, setSelectedFile] = React.useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = React.useState<string | null>(null);
-  const [identificationResult, setIdentificationResult] = React.useState<IdentifyProductOutput | null>(null);
+  const [identificationResult, setIdentificationResult] = React.useState<(IdentifyProductOutput & { dbProduct?: Product | null }) | null>(null);
   const { toast } = useToast();
   const [isAddProductOpen, setIsAddProductOpen] = React.useState(false);
 

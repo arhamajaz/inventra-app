@@ -11,24 +11,24 @@ import { Label } from '@/components/ui/label';
 import { KeyRound } from 'lucide-react';
 import { useToast } from '@/hooks/use-toast';
 import { RadioGroup, RadioGroupItem } from '@/components/ui/radio-group';
-import { useUser } from '@/components/user/user-provider';
+import { signIn } from 'next-auth/react';
+import { registerUser } from '@/app/actions';
+import { Loader2 } from 'lucide-react';
 import type { UserRole } from '@/lib/types';
-import { useCustomers } from '@/components/user/customer-provider';
 
 const ADMIN_AUTH_KEY = '1875';
 
 export default function SignupPage() {
   const router = useRouter();
   const { toast } = useToast();
-  const { setUser } = useUser();
-  const { customers, addCustomer } = useCustomers();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
   const [role, setRole] = useState<UserRole>('Consumer');
   const [adminKey, setAdminKey] = useState('');
+  const [isLoading, setIsLoading] = useState(false);
 
-  const handleSignup = () => {
+  const handleSignup = async () => {
     if (!email || !password || !confirmPassword) {
       toast({
         variant: 'destructive',
@@ -46,15 +46,6 @@ export default function SignupPage() {
       });
       return;
     }
-
-    if (customers.some(customer => customer.email === email)) {
-        toast({
-          variant: 'destructive',
-          title: 'Email Already Exists',
-          description: 'This email is already registered. Please log in.',
-        });
-        return;
-    }
     
     if (role === 'Admin' && adminKey !== ADMIN_AUTH_KEY) {
         toast({
@@ -65,24 +56,51 @@ export default function SignupPage() {
         return;
     }
 
-    // In a real application, you would create the user account here.
-    const customerId = `FS-${Math.floor(100000 + Math.random() * 900000)}`;
-    
-    if (role === 'Consumer') {
-        addCustomer({
-            id: customerId,
-            name: email.split('@')[0],
-            email: email,
+    setIsLoading(true);
+
+    try {
+      const result = await registerUser({
+        email,
+        name: email.split('@')[0],
+        role: role as 'Admin' | 'Consumer',
+      });
+
+      if (result.error) {
+        toast({
+          variant: 'destructive',
+          title: 'Signup Failed',
+          description: result.error,
         });
+        return;
+      }
+
+      toast({
+        title: 'Account Created',
+        description: 'Logging you in...',
+      });
+
+      // Sign in automatically
+      const loginResult = await signIn('credentials', {
+        email,
+        password,
+        redirect: false,
+      });
+
+      if (loginResult?.error) {
+        router.push('/login');
+      } else {
+        router.push('/dashboard');
+        router.refresh();
+      }
+    } catch (error) {
+      toast({
+        variant: 'destructive',
+        title: 'Error',
+        description: 'An unexpected error occurred.',
+      });
+    } finally {
+      setIsLoading(false);
     }
-    
-    toast({
-      title: 'Signup Successful!',
-      description: 'You have successfully created your account.',
-    });
-    
-    setUser({role: role, email: email, customerId: role === 'Consumer' ? customerId : undefined});
-    router.push('/dashboard');
   };
 
   return (
@@ -153,8 +171,12 @@ export default function SignupPage() {
                 onChange={(e) => setConfirmPassword(e.target.value)}
             />
           </div>
-          <Button onClick={handleSignup} className="w-full bg-accent hover:bg-accent/90 text-accent-foreground">
-            Sign Up
+          <Button 
+            onClick={handleSignup} 
+            className="w-full bg-accent hover:bg-accent/90 text-accent-foreground"
+            disabled={isLoading}
+          >
+            {isLoading ? <Loader2 className="mr-2 h-4 w-4 animate-spin" /> : 'Sign Up'}
           </Button>
           <div className="text-center text-sm text-muted-foreground">
             Already have an account?{' '}

@@ -2,8 +2,12 @@ import { AppHeader } from '@/components/layout/header';
 import { AppSidebar } from '@/components/layout/sidebar';
 import { FulfillmentTracker } from '@/components/dashboard/fulfillment-tracker';
 import { DemandSupplyHeatmap } from '@/components/dashboard/demand-supply-heatmap';
+import { getOrders, getProducts } from '../actions';
 
-export default function AnalyticsPage() {
+export default async function AnalyticsPage() {
+  const orders = await getOrders();
+  const products = await getProducts();
+
   return (
     <div className="flex min-h-screen w-full bg-muted/40">
       <AppSidebar />
@@ -13,8 +17,8 @@ export default function AnalyticsPage() {
           <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
              <h1 className="text-2xl font-semibold">Analytics</h1>
             <div className="grid md:grid-cols-2 gap-4 md:gap-8">
-              <FulfillmentTracker />
-              <DemandSupplyHeatmap />
+              <FulfillmentTracker initialOrders={orders} />
+              <DemandSupplyHeatmap initialProducts={products} />
             </div>
           </div>
         </main>

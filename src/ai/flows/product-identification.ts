@@ -9,9 +9,9 @@
 
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
-import { products } from '@/lib/mock-data';
-
-const productList = products.map(p => ({ id: p.id, name: p.name, category: p.category }));
+import { logAiUsage } from '@/lib/ai-tracking';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
 
 const IdentifyProductInputSchema = z.object({
   photoDataUri: z
@@ -34,23 +34,18 @@ export async function identifyProduct(input: IdentifyProductInput): Promise<Iden
   return identifyProductFlow(input);
 }
 
-const prompt = ai.definePrompt({
-  name: 'identifyProductPrompt',
-  input: {schema: IdentifyProductInputSchema},
-  output: {schema: IdentifyProductOutputSchema},
-  prompt: `You are an expert product identifier for an inventory management system. You will be provided with an image of a product.
+import { getAiPrompt } from '@/lib/ai-prompts';
+
+const DEFAULT_PROMPT = `You are an expert product identifier for an inventory management system. You will be provided with an image of a product.
 Your task is to first use your general knowledge to identify the product in the image.
 Then, you must determine if this identified product matches any of the products in the following list.
 
 Available products (JSON format):
-${JSON.stringify(productList)}
+{{productListString}}
 
 Use the image as the primary source of information. Provide the product name of the best match from the list, its corresponding ID, a confidence score for the match, and your reasoning.
 
-If the product in the image does not seem to match any product in the list, identify the product from your general knowledge, but choose the closest possible match from the list and use a lower confidence score to indicate the mismatch.
-
-Image: {{media url=photoDataUri}}`,
-});
+If the product in the image does not seem to match any product in the list, identify the product from your general knowledge, but choose the closest possible match from the list and use a lower confidence score to indicate the mismatch.`;
 
 const identifyProductFlow = ai.defineFlow(
   {
@@ -59,7 +54,41 @@ const identifyProductFlow = ai.defineFlow(
     outputSchema: IdentifyProductOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    // Fetch session for user tracking
+    const session = await getServerSession(authOptions);
+    const userId = (session?.user as any)?.id;
+
+    // Fetch fresh product list from database
+    const products = await prisma.product.findMany({
+      select: { id: true, name: true, category: true }
+    });
+    
+    const productListString = JSON.stringify(products);
+
+    // Fetch dynamic prompt
+    const dynamicPromptText = await getAiPrompt('productIdentification', DEFAULT_PROMPT);
+
+    const response = await ai.generate({
+      model: 'googleai/gemini-2.0-flash',
+      input: input.photoDataUri,
+      prompt: dynamicPromptText.replace('{{productListString}}', productListString),
+      output: { schema: IdentifyProductOutputSchema },
+    });
+    
+    const output = response.output;
+
+    // Log usage
+    if (response.usage) {
+      await logAiUsage({
+        userId,
+        modelName: 'googleai/gemini-2.0-flash',
+        promptTokens: response.usage.inputTokens,
+        completionTokens: response.usage.outputTokens,
+        totalTokens: response.usage.totalTokens,
+        action: 'Product Identification',
+      });
+    }
+    
     return output!;
   }
 );

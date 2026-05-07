@@ -12,6 +12,10 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
+import { logAiUsage } from '@/lib/ai-tracking';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+
 const ForecastDemandInputSchema = z.object({
   productName: z.string().describe('The name of the product to forecast demand for.'),
   historicalSalesData: z.string().describe('Historical sales data for the product, in JSON format.'),
@@ -31,11 +35,9 @@ export async function forecastDemand(input: ForecastDemandInput): Promise<Foreca
   return forecastDemandFlow(input);
 }
 
-const prompt = ai.definePrompt({
-  name: 'forecastDemandPrompt',
-  input: {schema: ForecastDemandInputSchema},
-  output: {schema: ForecastDemandOutputSchema},
-  prompt: `You are an expert demand forecaster. You will be provided with the historical sales data for a product, and you will use this information to forecast demand for the next month.
+import { getAiPrompt } from '@/lib/ai-prompts';
+
+const DEFAULT_PROMPT = `You are an expert demand forecaster. You will be provided with the historical sales data for a product, and you will use this information to forecast demand for the next month.
 
 {% if marketTrends %}Here are some current market trends that might affect demand:
 {{marketTrends}}
@@ -52,8 +54,7 @@ Product Name:
 {{productName}}
 
 Please provide a forecast of demand for the next month, in JSON format, with each day as a key and the forecasted demand as the value. Also, provide a confidence level for the forecast, and an explanation of the factors that influenced the forecast.
-`, 
-});
+`;
 
 const forecastDemandFlow = ai.defineFlow(
   {
@@ -62,7 +63,35 @@ const forecastDemandFlow = ai.defineFlow(
     outputSchema: ForecastDemandOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    // Fetch session for user tracking
+    const session = await getServerSession(authOptions);
+    const userId = (session?.user as any)?.id;
+
+    // Fetch dynamic prompt
+    const dynamicPromptText = await getAiPrompt('demandForecasting', DEFAULT_PROMPT);
+
+    const prompt = ai.definePrompt({
+      name: 'forecastDemandPromptInstance',
+      input: {schema: ForecastDemandInputSchema},
+      output: {schema: ForecastDemandOutputSchema},
+      prompt: dynamicPromptText,
+    });
+
+    const response = await prompt(input);
+    const output = response.output;
+
+    // Log usage
+    if (response.usage) {
+      await logAiUsage({
+        userId,
+        modelName: 'googleai/gemini-2.0-flash',
+        promptTokens: response.usage.inputTokens,
+        completionTokens: response.usage.outputTokens,
+        totalTokens: response.usage.totalTokens,
+        action: 'Demand Forecasting',
+      });
+    }
+
     return output!;
   }
 );

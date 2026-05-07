@@ -6,7 +6,6 @@ import Image from 'next/image';
 import { Button } from '@/components/ui/button';
 import type { IdentifyProductOutput } from '@/ai/flows/product-identification';
 import { Check, PackagePlus, RefreshCw, Minus, Plus, ShoppingCart, View } from 'lucide-react';
-import { products } from '@/lib/mock-data';
 import { Dialog, DialogTrigger } from '@/components/ui/dialog';
 import { AddProductDialog } from './add-product-dialog';
 import { Badge } from '../ui/badge';
@@ -17,7 +16,7 @@ import { Input } from '../ui/input';
 import { Label } from '../ui/label';
 
 interface ProductIdentificationResultProps {
-  result: IdentifyProductOutput;
+  result: IdentifyProductOutput & { dbProduct?: Product | null };
   previewUrl: string;
   onRetry: () => void;
   onAddDialogChange: (open: boolean) => void;
@@ -36,7 +35,7 @@ export function ProductIdentificationResult({
   const { toast } = useToast();
   const [quantity, setQuantity] = React.useState(1);
 
-  const identifiedProduct = products.find(p => p.id === result.productId);
+  const identifiedProduct = result.dbProduct;
   const isInInventory = !!identifiedProduct;
 
   const handleViewInventory = () => {

@@ -19,14 +19,16 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { products } from '@/lib/mock-data';
 import type { Product } from '@/lib/types';
 
-const lowStockProducts = products.filter(
-  (p) => p.stock < p.threshold
-);
+interface RestockAlertsProps {
+  products: Product[];
+}
 
-export function RestockAlerts() {
+export function RestockAlerts({ products }: RestockAlertsProps) {
+  const lowStockProducts = products.filter(
+    (p) => p.stock <= p.threshold
+  );
   return (
     <Card>
       <CardHeader>

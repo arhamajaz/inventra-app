@@ -18,16 +18,20 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { orders, products } from '@/lib/mock-data';
 import { cn } from '@/lib/utils';
 import { IndianRupee } from 'lucide-react';
+import type { Order, Product } from '@/lib/types';
 
+interface CustomerListProps {
+  initialOrders: Order[];
+  initialProducts: Product[];
+}
 
-export function CustomerList() {
+export function CustomerList({ initialOrders, initialProducts }: CustomerListProps) {
 
   const getOrderTotal = (orderItems: { productName: string; quantity: number }[]) => {
     return orderItems.reduce((total, item) => {
-        const product = products.find(p => p.name === item.productName);
+        const product = initialProducts.find(p => p.name === item.productName);
         return total + (product ? product.price * item.quantity : 0);
     }, 0);
   }
@@ -53,7 +57,7 @@ export function CustomerList() {
             </TableRow>
           </TableHeader>
           <TableBody>
-            {orders.map((order) => (
+            {initialOrders.map((order) => (
               <TableRow key={order.id}>
                 <TableCell className="font-medium">{order.id}</TableCell>
                 <TableCell>{order.customerName}</TableCell>

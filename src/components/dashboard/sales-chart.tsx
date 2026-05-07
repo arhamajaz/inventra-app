@@ -13,9 +13,11 @@ import {
   ChartTooltip,
   ChartTooltipContent,
 } from '@/components/ui/chart';
-import { salesData } from '@/lib/mock-data';
+interface SalesChartProps {
+  data: { name: string; sales: number }[];
+}
 
-export function SalesChart() {
+export function SalesChart({ data }: SalesChartProps) {
   return (
     <Card>
       <CardHeader>
@@ -24,7 +26,7 @@ export function SalesChart() {
       </CardHeader>
       <CardContent>
         <ChartContainer config={{ sales: { label: 'Sales', color: 'hsl(var(--primary))' } }} className="h-64 w-full mt-4">
-            <BarChart accessibilityLayer data={salesData}>
+            <BarChart accessibilityLayer data={data}>
                 <CartesianGrid vertical={false} />
                 <XAxis
                 dataKey="name"

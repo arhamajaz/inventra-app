@@ -11,6 +11,10 @@
 import {ai} from '@/ai/genkit';
 import {z} from 'genkit';
 
+import { logAiUsage } from '@/lib/ai-tracking';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+
 const CalculateRestockThresholdInputSchema = z.object({
   productId: z.string().describe('The unique identifier for the product.'),
   historicalSalesData: z
@@ -52,11 +56,9 @@ export async function calculateRestockThreshold(
   return calculateRestockThresholdFlow(input);
 }
 
-const prompt = ai.definePrompt({
-  name: 'calculateRestockThresholdPrompt',
-  input: {schema: CalculateRestockThresholdInputSchema},
-  output: {schema: CalculateRestockThresholdOutputSchema},
-  prompt: `You are an expert inventory management consultant. You will analyze the provided data and determine the optimal restock threshold for a product.  The goal is to minimize stockouts while also avoiding overstocking.
+import { getAiPrompt } from '@/lib/ai-prompts';
+
+const DEFAULT_PROMPT = `You are an expert inventory management consultant. You will analyze the provided data and determine the optimal restock threshold for a product.  The goal is to minimize stockouts while also avoiding overstocking.
 
   Here is the information about the product:
   - Product ID: {{{productId}}}
@@ -78,8 +80,7 @@ const prompt = ai.definePrompt({
 
   Ensure that the restockThreshold is a number and the reasoning is a clear and concise explanation.
   Remember to take into account the fact that the ideal re-stock threshold should adapt to historical sales data to minimize stockouts and overstocking.
-  `,
-});
+  `;
 
 const calculateRestockThresholdFlow = ai.defineFlow(
   {
@@ -88,7 +89,35 @@ const calculateRestockThresholdFlow = ai.defineFlow(
     outputSchema: CalculateRestockThresholdOutputSchema,
   },
   async input => {
-    const {output} = await prompt(input);
+    // Fetch session for user tracking
+    const session = await getServerSession(authOptions);
+    const userId = (session?.user as any)?.id;
+
+    // Fetch dynamic prompt
+    const dynamicPromptText = await getAiPrompt('restockThreshold', DEFAULT_PROMPT);
+
+    const prompt = ai.definePrompt({
+      name: 'calculateRestockThresholdPromptInstance',
+      input: {schema: CalculateRestockThresholdInputSchema},
+      output: {schema: CalculateRestockThresholdOutputSchema},
+      prompt: dynamicPromptText,
+    });
+
+    const response = await prompt(input);
+    const output = response.output;
+
+    // Log usage
+    if (response.usage) {
+      await logAiUsage({
+        userId,
+        modelName: 'googleai/gemini-2.0-flash',
+        promptTokens: response.usage.inputTokens,
+        completionTokens: response.usage.outputTokens,
+        totalTokens: response.usage.totalTokens,
+        action: 'Restock Threshold Calculation',
+      });
+    }
+
     return output!;
   }
 );

@@ -7,19 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { products } from '@/lib/mock-data';
-import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from '@/components/ui/tooltip';
-import { cn } from '@/lib/utils';
+import type { Product } from '@/lib/types';
 
-const getHeatmapColorClass = (ratio: number) => {
-  if (ratio < 0.25) return 'bg-destructive/80 hover:bg-destructive'; // Critically low
-  if (ratio < 0.5) return 'bg-destructive/50 hover:bg-destructive/70'; // Low
-  if (ratio < 0.75) return 'bg-yellow-400/50 hover:bg-yellow-400/70'; // Warning
-  if (ratio < 1) return 'bg-primary/40 hover:bg-primary/60'; // Healthy
-  return 'bg-primary/20 hover:bg-primary/40'; // Overstocked
-};
+interface DemandSupplyHeatmapProps {
+  initialProducts: Product[];
+}
 
-export function DemandSupplyHeatmap() {
+export function DemandSupplyHeatmap({ initialProducts }: DemandSupplyHeatmapProps) {
   return (
     <Card>
       <CardHeader>
@@ -29,8 +23,12 @@ export function DemandSupplyHeatmap() {
       <CardContent>
         <TooltipProvider>
           <div className="grid grid-cols-4 md:grid-cols-6 gap-2">
-            {products.map((product) => {
-              const salesVelocity = product.historicalSalesData.reduce((acc, sale) => acc + sale.quantity, 0) / product.historicalSalesData.length;
+            {initialProducts.map((product) => {
+              // Handle potential missing historical data
+              const historicalData = product.historicalSalesData || [];
+              const salesVelocity = historicalData.length > 0 
+                ? historicalData.reduce((acc, sale) => acc + (sale.quantity || 0), 0) / historicalData.length 
+                : 0;
               const stockToSalesRatio = salesVelocity > 0 ? product.stock / (salesVelocity * 7) : 1; // 7 days of supply
               return (
                 <Tooltip key={product.id}>

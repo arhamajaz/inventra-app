@@ -19,15 +19,17 @@ import {
   TableRow,
 } from '@/components/ui/table';
 import { Badge } from '@/components/ui/badge';
-import { products } from '@/lib/mock-data';
+import { Badge } from '@/components/ui/badge';
 import { IndianRupee } from 'lucide-react';
+import type { Product } from '@/lib/types';
 
 interface ProductListProps {
+    initialProducts: Product[];
     searchQuery: string;
 }
 
-export function ProductList({ searchQuery }: ProductListProps) {
-  const filteredProducts = products.filter(product => 
+export function ProductList({ initialProducts, searchQuery }: ProductListProps) {
+  const filteredProducts = initialProducts.filter(product => 
     product.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
     product.category.toLowerCase().includes(searchQuery.toLowerCase())
   );

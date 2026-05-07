@@ -1,17 +1,19 @@
-
 import * as React from 'react';
 import { AppHeader } from '@/components/layout/header';
 import { AppSidebar } from '@/components/layout/sidebar';
 import { ProductList } from '@/components/dashboard/product-list';
+import { getProducts } from '../actions';
 
-export default function InventoryPage({
+export default async function InventoryPage({
     searchParams,
 }: {
-    searchParams?: {
+    searchParams?: Promise<{
         search?: string;
-    };
+    }>;
 }) {
-  const searchQuery = searchParams?.search || '';
+  const resolvedParams = await searchParams;
+  const searchQuery = resolvedParams?.search || '';
+  const products = await getProducts();
 
   return (
     <div className="flex min-h-screen w-full bg-muted/40">
@@ -22,7 +24,7 @@ export default function InventoryPage({
           <div className="grid auto-rows-max items-start gap-4 md:gap-8 lg:col-span-2">
              <h1 className="text-2xl font-semibold">Inventory</h1>
              <React.Suspense fallback={<p>Loading products...</p>}>
-                <ProductList searchQuery={searchQuery} />
+                <ProductList initialProducts={products} searchQuery={searchQuery} />
              </React.Suspense>
           </div>
         </main>

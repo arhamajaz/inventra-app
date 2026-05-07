@@ -17,18 +17,26 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { products } from '@/lib/mock-data';
 import type { Product } from '@/lib/types';
-import { getDemandForecast } from '@/app/actions';
+import { getDemandForecast, getProducts } from '@/app/actions';
 import { useToast } from '@/hooks/use-toast';
 import { Wand2, Zap } from 'lucide-react';
 import { Skeleton } from '../ui/skeleton';
 
 export function DemandForecast() {
+  const [productsList, setProductsList] = React.useState<Product[]>([]);
   const [selectedProduct, setSelectedProduct] = React.useState<Product | null>(null);
   const [forecast, setForecast] = React.useState<any>(null);
   const [isLoading, setIsLoading] = React.useState(false);
   const { toast } = useToast();
+
+  React.useEffect(() => {
+    async function fetchProducts() {
+      const data = await getProducts();
+      setProductsList(data);
+    }
+    fetchProducts();
+  }, []);
 
   const handleForecast = async () => {
     if (!selectedProduct) {
@@ -81,7 +89,7 @@ export function DemandForecast() {
       <CardContent className="space-y-4">
         <Select
           onValueChange={(value) => {
-            const product = products.find((p) => p.id === value);
+            const product = productsList.find((p) => p.id === value);
             setSelectedProduct(product || null);
             setForecast(null);
           }}
@@ -91,7 +99,7 @@ export function DemandForecast() {
             <SelectValue placeholder="Select a product" />
           </SelectTrigger>
           <SelectContent>
-            {products.map((product) => (
+            {productsList.map((product) => (
               <SelectItem key={product.id} value={product.id}>
                 {product.name}
               </SelectItem>

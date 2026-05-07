@@ -18,7 +18,7 @@ export const products: Product[] = [
     capacity: 3000,
     threshold: 500,
     price: 25,
-    imageUrl: "https://i.ibb.co/L9t0bJ8/parle-g-original-biscuits-250g.png",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/e/ee/Parle-G_biscuits.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 150 + Math.floor(Math.random() * 50) })),
   },
   {
@@ -29,7 +29,7 @@ export const products: Product[] = [
     capacity: 2000,
     threshold: 350,
     price: 50,
-    imageUrl: "https://i.ibb.co/mHvqM8J/britannia-good-day-butter-cookies-200g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/106/301/2242/front_en.16.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 80 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -40,7 +40,7 @@ export const products: Product[] = [
     capacity: 1500,
     threshold: 250,
     price: 40,
-    imageUrl: "https://i.ibb.co/GcJ33T3/haldiram-s-aloo-bhujia-150g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/400/440/1255/front_en.11.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 60 + Math.floor(Math.random() * 15) })),
   },
   {
@@ -51,7 +51,7 @@ export const products: Product[] = [
     capacity: 4000,
     threshold: 600,
     price: 20,
-    imageUrl: "https://i.ibb.co/qj5b65L/lay-s-classic-salted-potato-chips-52g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/149/110/1628/front_en.8.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 200 + Math.floor(Math.random() * 70) })),
   },
   {
@@ -62,7 +62,7 @@ export const products: Product[] = [
     capacity: 2000,
     threshold: 300,
     price: 40,
-    imageUrl: "https://i.ibb.co/VMywDWs/coca-cola-soft-drink-600ml.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/544/900/021/4911/front_en.188.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 100 + Math.floor(Math.random() * 30) })),
   },
   {
@@ -73,7 +73,7 @@ export const products: Product[] = [
     capacity: 1000,
     threshold: 150,
     price: 100,
-    imageUrl: "https://i.ibb.co/Xz9J2dm/frooti-mango-drink-1l.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/105/800/2258/front_en.11.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 50 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -84,7 +84,7 @@ export const products: Product[] = [
     capacity: 1000,
     threshold: 180,
     price: 280,
-    imageUrl: "https://i.ibb.co/D9pnp1N/tata-tea-gold-500g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/105/201/5001/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 40 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -95,7 +95,7 @@ export const products: Product[] = [
     capacity: 700,
     threshold: 120,
     price: 160,
-    imageUrl: "https://i.ibb.co/RSCyG9R/nescafe-classic-instant-coffee-100g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/105/881/5452/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 30 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -106,7 +106,7 @@ export const products: Product[] = [
     capacity: 5000,
     threshold: 800,
     price: 15,
-    imageUrl: "https://i.ibb.co/XSCxS2g/maggi-2-minute-noodles-masala-70g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/105/800/0148/front_en.17.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 250 + Math.floor(Math.random() * 80) })),
   },
   {
@@ -117,7 +117,7 @@ export const products: Product[] = [
     capacity: 1200,
     threshold: 220,
     price: 250,
-    imageUrl: "https://i.ibb.co/Hhzj1K5/amul-butter-500g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/126/201/0014/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 60 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -128,7 +128,7 @@ export const products: Product[] = [
     capacity: 1000,
     threshold: 160,
     price: 280,
-    imageUrl: "https://i.ibb.co/VJxB8z1/aashirvaad-atta-5kg.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/172/501/6838/front_en.7.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 50 + Math.floor(Math.random() * 15) })),
   },
   {
@@ -139,7 +139,7 @@ export const products: Product[] = [
     capacity: 800,
     threshold: 150,
     price: 120,
-    imageUrl: "https://i.ibb.co/dDThc0H/daawat-basmati-rice-1kg.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/155/200/0043/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 45 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -150,7 +150,7 @@ export const products: Product[] = [
     capacity: 700,
     threshold: 120,
     price: 140,
-    imageUrl: "https://i.ibb.co/mSChf84/tata-sampann-toor-dal-1kg.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/105/201/0303/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 40 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -161,7 +161,7 @@ export const products: Product[] = [
     capacity: 600,
     threshold: 110,
     price: 160,
-    imageUrl: "https://i.ibb.co/8Y0zJ8Q/fortune-refined-sunflower-oil-1l.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/600/716/1023/front_en.10.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 35 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -172,7 +172,7 @@ export const products: Product[] = [
     capacity: 1200,
     threshold: 200,
     price: 45,
-    imageUrl: "https://i.ibb.co/fDYs4z3/sugar-1kg.png",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/3/3c/Sucre_blanc_cassonade_complet_rapadura.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 70 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -183,7 +183,7 @@ export const products: Product[] = [
     capacity: 1500,
     threshold: 240,
     price: 20,
-    imageUrl: "https://i.ibb.co/SnsyT7M/salt-1kg.png",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/2/23/Salt-crystals-3240.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 80 + Math.floor(Math.random() * 20) })),
   },
   {
@@ -194,7 +194,7 @@ export const products: Product[] = [
     capacity: 2500,
     threshold: 400,
     price: 60,
-    imageUrl: "https://i.ibb.co/0FDhBq1/cadbury-dairy-milk-chocolate-50g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/762/220/114/2301/front_en.45.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 120 + Math.floor(Math.random() * 40) })),
   },
   {
@@ -205,7 +205,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 60,
     price: 180,
-    imageUrl: "https://i.ibb.co/r2gPzct/kwality-walls-vanilla-ice-cream-700ml.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/103/055/7286/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 20 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -216,7 +216,7 @@ export const products: Product[] = [
     capacity: 500,
     threshold: 80,
     price: 50,
-    imageUrl: "https://i.ibb.co/y4YJq2L/knorr-sweet-corn-veg-soup-43g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/103/051/8232/front_en.18.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 25 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -227,7 +227,7 @@ export const products: Product[] = [
     capacity: 2000,
     threshold: 360,
     price: 15,
-    imageUrl: "https://i.ibb.co/gR2YyCg/sunfeast-yippee-magic-masala-noodles-70g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/172/510/3743/front_en.4.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 100 + Math.floor(Math.random() * 30) })),
   },
   {
@@ -238,7 +238,7 @@ export const products: Product[] = [
     capacity: 700,
     threshold: 120,
     price: 35,
-    imageUrl: "https://i.ibb.co/yQjKMSL/mother-dairy-curd-400g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/164/800/0023/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 40 + Math.floor(Math.random() * 15) })),
   },
   {
@@ -249,7 +249,7 @@ export const products: Product[] = [
     capacity: 500,
     threshold: 80,
     price: 40,
-    imageUrl: "https://i.ibb.co/bX1sC4f/britannia-whole-wheat-bread-400g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/106/300/1000/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 30 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -260,7 +260,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 60,
     price: 120,
-    imageUrl: "https://i.ibb.co/2vWfTj8/dabur-honey-250g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/120/701/1001/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 20 + Math.floor(Math.random() * 5) })),
   },
   {
@@ -271,7 +271,7 @@ export const products: Product[] = [
     capacity: 300,
     threshold: 50,
     price: 150,
-    imageUrl: "https://i.ibb.co/zXjJtJ6/kissan-mixed-fruit-jam-500g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/103/071/5273/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 15 + Math.floor(Math.random() * 5) })),
   },
   {
@@ -282,7 +282,7 @@ export const products: Product[] = [
     capacity: 400,
     threshold: 70,
     price: 70,
-    imageUrl: "https://i.ibb.co/nMSdwb8/catch-sprinklers-black-pepper-50g.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/119/220/1105/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 20 + Math.floor(Math.random() * 5) })),
   },
   {
@@ -293,7 +293,7 @@ export const products: Product[] = [
     capacity: 100,
     threshold: 15,
     price: 18999,
-    imageUrl: "https://i.ibb.co/zZ38YxT/redmi-note-13-pro-8gb-ram-128gb-storage.png",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/4/4b/Redmi_Note_13_Pro_5G.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 5 + Math.floor(Math.random() * 3) })),
   },
   {
@@ -304,7 +304,7 @@ export const products: Product[] = [
     capacity: 80,
     threshold: 12,
     price: 25999,
-    imageUrl: "https://i.ibb.co/yQjKMSL/mother-dairy-curd-400g.png",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/e/eb/Samsung_Galaxy_A55_5G_Awesome_Lilac_Front.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 4 + Math.floor(Math.random() * 3) })),
   },
   {
@@ -315,7 +315,7 @@ export const products: Product[] = [
     capacity: 50,
     threshold: 8,
     price: 79900,
-    imageUrl: "https://i.ibb.co/1mZz3rv/apple-iphone-15-128gb.png",
+    imageUrl: "https://upload.wikimedia.org/wikipedia/commons/d/df/IPhone_15_Pro_Black_Titanium.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 2 + Math.floor(Math.random() * 2) })),
   },
   {
@@ -326,7 +326,7 @@ export const products: Product[] = [
     capacity: 800,
     threshold: 140,
     price: 180,
-    imageUrl: "https://i.ibb.co/tZ2x8rV/dettol-original-soap-125g-pack-of-4.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/139/642/4100/front_en.11.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 40 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -337,7 +337,7 @@ export const products: Product[] = [
     capacity: 500,
     threshold: 80,
     price: 140,
-    imageUrl: "https://i.ibb.co/5cWJc9g/himalaya-herbals-purifying-neem-face-wash-150ml.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/113/850/0279/front_en.3.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 25 + Math.floor(Math.random() * 8) })),
   },
   {
@@ -348,7 +348,7 @@ export const products: Product[] = [
     capacity: 700,
     threshold: 120,
     price: 180,
-    imageUrl: "https://i.ibb.co/sKkY9jD/lizol-disinfectant-floor-cleaner-1l.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/139/602/2108/front_en.14.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 35 + Math.floor(Math.random() * 10) })),
   },
   {
@@ -359,7 +359,7 @@ export const products: Product[] = [
     capacity: 600,
     threshold: 110,
     price: 120,
-    imageUrl: "https://i.ibb.co/7nB3rGp/harpic-powerplus-toilet-cleaner-750ml.png",
+    imageUrl: "https://images.openfoodfacts.org/images/products/890/139/615/3000/front_en.8.400.jpg",
     historicalSalesData: Array.from({ length: 30 }, (_, i) => ({ date: `2023-05-${String(i + 1).padStart(2, '0')}`, quantity: 30 + Math.floor(Math.random() * 10) })),
   }
 ];

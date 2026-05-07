@@ -1,25 +1,12 @@
-
 'use client';
 import type { User, UserRole } from '@/lib/types';
+import { SessionProvider, useSession } from 'next-auth/react';
 import * as React from 'react';
-
-const ADMIN_USER: User = {
-    role: 'Admin',
-    name: 'Admin User',
-    email: 'admin@inven-tra.com',
-};
-
-const CONSUMER_USER: User = {
-    role: 'Consumer',
-    name: 'Consumer User',
-    email: 'consumer@inven-tra.com',
-    customerId: `FS-${Math.floor(100000 + Math.random() * 900000)}`
-};
-
 
 interface UserContextType {
   user: User;
-  setUser: (settings: { role: UserRole, customerId?: string, email?: string }) => void;
+  status: 'loading' | 'authenticated' | 'unauthenticated';
+  setUser: (user: any) => void;
 }
 
 const UserContext = React.createContext<UserContextType | undefined>(undefined);
@@ -32,23 +19,43 @@ export function useUser() {
   return context;
 }
 
-export function UserProvider({ children }: { children: React.ReactNode }) {
-  const [user, setCurrentUser] = React.useState<User>(CONSUMER_USER);
+function UserInternalProvider({ children }: { children: React.ReactNode }) {
+  const { data: session, status } = useSession();
 
-  const setUser = (settings: { role: UserRole, customerId?: string, email?: string }) => {
-    if (settings.role === 'Admin') {
-        const adminEmail = settings.email || ADMIN_USER.email;
-        setCurrentUser({...ADMIN_USER, email: adminEmail, name: adminEmail.split('@')[0]});
-    } else {
-        const consumerEmail = settings.email || CONSUMER_USER.email;
-        const newId = settings.customerId || user.customerId || `FS-${Math.floor(100000 + Math.random() * 900000)}`;
-        setCurrentUser({ ...CONSUMER_USER, customerId: newId, email: consumerEmail, name: consumerEmail.split('@')[0] });
+  const user: User = React.useMemo(() => {
+    if (!session?.user) {
+      return {
+        name: 'Guest',
+        email: '',
+        role: 'Consumer',
+      };
     }
+    return {
+      name: session.user.name || 'User',
+      email: session.user.email || '',
+      role: (session.user as any).role || 'Consumer',
+      customerId: (session.user as any).customerId,
+      membershipId: (session.user as any).membershipId,
+    };
+  }, [session]);
+
+  const setUser = (user: any) => {
+    console.warn('setUser is deprecated. Authentication is now handled by NextAuth.');
   };
 
   return (
-    <UserContext.Provider value={{ user, setUser }}>
+    <UserContext.Provider value={{ user, status, setUser }}>
       {children}
     </UserContext.Provider>
+  );
+}
+
+export function UserProvider({ children }: { children: React.ReactNode }) {
+  return (
+    <SessionProvider>
+      <UserInternalProvider>
+        {children}
+      </UserInternalProvider>
+    </SessionProvider>
   );
 }

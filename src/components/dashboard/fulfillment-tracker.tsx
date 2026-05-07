@@ -7,12 +7,13 @@ import {
   CardHeader,
   CardTitle,
 } from '@/components/ui/card';
-import { orders } from '@/lib/mock-data';
-import { Badge } from '@/components/ui/badge';
-import { cn } from '@/lib/utils';
-import { Button } from '@/components/ui/button';
+import type { Order } from '@/lib/types';
 
-export function FulfillmentTracker() {
+interface FulfillmentTrackerProps {
+  initialOrders: Order[];
+}
+
+export function FulfillmentTracker({ initialOrders }: FulfillmentTrackerProps) {
   return (
     <Card>
       <CardHeader>
@@ -21,7 +22,7 @@ export function FulfillmentTracker() {
       </CardHeader>
       <CardContent>
         <div className="space-y-4">
-          {orders.map((order) => (
+          {initialOrders.map((order) => (
             <div key={order.id} className="flex items-center">
               <div className="flex-1">
                 <p className="font-medium">{order.id}</p>

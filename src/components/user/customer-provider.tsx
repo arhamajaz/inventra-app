@@ -1,8 +1,8 @@
-
 'use client';
+
 import type { Customer } from '@/lib/types';
-import { customers as initialCustomers } from '@/lib/mock-data';
 import * as React from 'react';
+import { getCustomers } from '@/app/actions';
 
 interface CustomerContextType {
   customers: Customer[];
@@ -20,7 +20,15 @@ export function useCustomers() {
 }
 
 export function CustomerProvider({ children }: { children: React.ReactNode }) {
-  const [customers, setCustomers] = React.useState<Customer[]>(initialCustomers);
+  const [customers, setCustomers] = React.useState<Customer[]>([]);
+
+  React.useEffect(() => {
+    async function fetchCustomers() {
+      const data = await getCustomers();
+      setCustomers(data);
+    }
+    fetchCustomers();
+  }, []);
 
   const addCustomer = (customer: Customer) => {
     setCustomers(prevCustomers => [...prevCustomers, customer]);

@@ -10,6 +10,10 @@ import {ai} from '@/ai/genkit';
 import { processFeedbackPrompt } from '@/ai/prompts/process-feedback-prompt';
 import { ProcessFeedbackInput, ProcessFeedbackInputSchema, ProcessFeedbackOutput, ProcessFeedbackOutputSchema } from '@/lib/feedback-types';
 
+import { logAiUsage } from '@/lib/ai-tracking';
+import { getServerSession } from 'next-auth';
+import { authOptions } from '@/lib/auth';
+
 export async function processUserFeedback(input: ProcessFeedbackInput): Promise<ProcessFeedbackOutput> {
   return processFeedbackFlow(input);
 }
@@ -21,8 +25,26 @@ const processFeedbackFlow = ai.defineFlow(
     outputSchema: ProcessFeedbackOutputSchema,
   },
   async input => {
+    // Fetch session for user tracking
+    const session = await getServerSession(authOptions);
+    const userId = (session?.user as any)?.id;
+
     const prompt = await processFeedbackPrompt();
-    const {output} = await prompt(input);
+    const response = await prompt(input);
+    const output = response.output;
+
+    // Log usage
+    if (response.usage) {
+      await logAiUsage({
+        userId,
+        modelName: 'googleai/gemini-2.0-flash',
+        promptTokens: response.usage.inputTokens,
+        completionTokens: response.usage.outputTokens,
+        totalTokens: response.usage.totalTokens,
+        action: 'Feedback Processing',
+      });
+    }
+
     return output!;
   }
 );

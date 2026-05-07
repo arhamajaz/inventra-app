@@ -1,15 +1,18 @@
-
 'use client';
 
-import { products } from '@/lib/mock-data';
 import { ProductCard } from './product-card';
 import { useCart } from './shopping-cart-provider';
+import type { Product } from '@/lib/types';
 
-export function ProductGrid() {
+interface ProductGridProps {
+  initialProducts: Product[];
+}
+
+export function ProductGrid({ initialProducts }: ProductGridProps) {
   const { addToCart } = useCart();
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-2 xl:grid-cols-3 gap-4">
-      {products.map((product) => (
+      {initialProducts.map((product) => (
         <ProductCard key={product.id} product={product} onAddToCart={addToCart} />
       ))}
     </div>
